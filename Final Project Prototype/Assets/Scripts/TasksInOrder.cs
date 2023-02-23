@@ -6,23 +6,53 @@ using UnityEngine.EventSystems;
 
 public class TasksInOrder : MonoBehaviour
 {
-    [SerializeField] List<GameObject> TasksList;
+    [SerializeField] List<GameObject> ListTasks;
     [SerializeField] int listCounter;
     [SerializeField] int clickedTaskCounter;
+    [SerializeField] int numberOfClickedTasks;
     TaskForList TaskScript;
+    string nameOfTask;
+
+    [SerializeField] GameObject TheGameManager;
 
     void Start()
     {
-        //BACK-UP ONLY FOR REMOVING TASKS FROM LIST - WIHOUT MAKING THEM APPEAR AGAIN
+        //listCounter = 4;
+        foreach (GameObject task in ListTasks)
+        {
+            task.SetActive(false);
+        }
+        //listCounter = 0;
+
+        TheGameManager = GameObject.Find("TheGameManager");
     }
 
     void Update()
     {
-        
+        //print(listCounter);
     }
 
-    void AddTaskToList()
+    public void AddTaskToList()
     {
+        //make button visible
+        ListTasks[listCounter].SetActive(true);
+        print("listCounter" + listCounter);
+
+        //set the number to determine the order of the task
+        numberOfClickedTasks++;
+        ListTasks[listCounter].GetComponent<TaskForList>().counter = numberOfClickedTasks;
+        print("numberOfClickedTasks" + numberOfClickedTasks);
+
+        //Add the text
+        GameObject GameObjectClicked = EventSystem.current.currentSelectedGameObject;
+        print("GameObjectClicked.name)" + GameObjectClicked.name + "=" + "ListTasks[listCounter]" + ListTasks[listCounter]);
+        //print();
+        ListTasks[listCounter].GetComponentInChildren<Text>().text = GameObjectClicked.name;
+
+        //increase counter to keep track of how many tasks are currently in the list
+        listCounter++;
+
+
         //list of type BUTTONS 
         //if the name of the button is X then add X as the first element
         //elemn1.Find component text = " X ";
@@ -38,22 +68,41 @@ public class TasksInOrder : MonoBehaviour
     {
         //Find which task was clicked
 
-        string nameOfTask = EventSystem.current.currentSelectedGameObject.name;
+        /* LONG WAY
+        string nameOfGameObjectClicked = EventSystem.current.currentSelectedGameObject.name;
         //print(EventSystem.current.currentSelectedGameObject.name);
-        TaskScript = GameObject.Find(nameOfTask).GetComponent<TaskForList>();
+        TaskScript = GameObject.Find(nameOfGameObjectClicked).GetComponent<TaskForList>();
         clickedTaskCounter = TaskScript.counter;
+        */ 
 
-        print(clickedTaskCounter);
-        //Text hinge = GetComponentInChildren<HingeJoint>();
+        // SHORTEST WAY
+        //clickedTaskCounter = EventSystem.current.currentSelectedGameObject.GetComponent<TaskForList>().counter;
 
-        for(int i = clickedTaskCounter-1; i < listCounter-1; i++)
+        GameObject GameObjectClicked = EventSystem.current.currentSelectedGameObject;
+        clickedTaskCounter = GameObjectClicked.GetComponent<TaskForList>().counter;
+        // print(clickedTaskCounter);
+
+
+        //Make it reappear - search the thought bubble based on the list's task's text 
+        
+        nameOfTask = GameObjectClicked.GetComponentInChildren<Text>().text;
+        /*
+        print(nameOfTask);
+        GameObject.Find(nameOfTask).SetActive(true);*/
+
+        TheGameManager.GetComponent<TasksReferences>().Activate(nameOfTask);
+
+        //Delete it and move upwards the other tasks
+
+        for (int i = clickedTaskCounter-1; i < listCounter-1; i++)
         {
-            TasksList[i].GetComponentInChildren<Text>().text = TasksList[i+1].GetComponentInChildren<Text>().text;
+            ListTasks[i].GetComponentInChildren<Text>().text = ListTasks[i+1].GetComponentInChildren<Text>().text;
         }
-        TasksList[listCounter-1].GetComponentInChildren<Text>().text = " ";
-        TasksList[listCounter - 1].SetActive(false);
+        ListTasks[listCounter-1].GetComponentInChildren<Text>().text = " ";
+        ListTasks[listCounter - 1].SetActive(false);
         
         listCounter--;
+        numberOfClickedTasks--;
         //print(listCounter);
     }
 }
