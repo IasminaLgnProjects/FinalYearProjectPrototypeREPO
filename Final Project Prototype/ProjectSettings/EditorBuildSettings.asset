@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Low Poly Bed Room Furniture PBR/Demo/Demo Scene.unity
+    guid: f9163f1f93df1b543838b03f441acb9e
+  - enabled: 1
+    path: Assets/Scenes/Message Lisa.unity
+    guid: 6ace421ab195e534c90f2e6aaa858d14
   m_configObjects: {}

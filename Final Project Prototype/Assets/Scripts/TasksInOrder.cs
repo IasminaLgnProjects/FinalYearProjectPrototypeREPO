@@ -13,96 +13,111 @@ public class TasksInOrder : MonoBehaviour
     TaskForList TaskScript;
     string nameOfTask;
 
-    [SerializeField] GameObject TheGameManager;
+    [SerializeField] GameObject ReadyPanel;
 
     void Start()
     {
-        //listCounter = 4;
+        //Clear the To Do list
         foreach (GameObject task in ListTasks)
         {
             task.SetActive(false);
         }
-        //listCounter = 0;
 
-        TheGameManager = GameObject.Find("TheGameManager");
+        ReadyPanel.SetActive(false);
     }
 
     void Update()
     {
-        //print(listCounter);
+
     }
 
     public void AddTaskToList()
     {
-        //make button visible
-        ListTasks[listCounter].SetActive(true);
-        print("listCounter" + listCounter);
+        //
+        // 1. Make the task (button) visible
+        //
 
-        //set the number to determine the order of the task
+        ListTasks[listCounter].SetActive(true);
+        //print("listCounter" + listCounter);
+
+         //
+         // 2. Set a number to determine the order of the tasks
+         //
+
         numberOfClickedTasks++;
         ListTasks[listCounter].GetComponent<TaskForList>().counter = numberOfClickedTasks;
-        print("numberOfClickedTasks" + numberOfClickedTasks);
+        //print("numberOfClickedTasks" + numberOfClickedTasks);
 
-        //Add the text
+        //
+        // 3. Add the text
+        //
+
         GameObject GameObjectClicked = EventSystem.current.currentSelectedGameObject;
-        print("GameObjectClicked.name)" + GameObjectClicked.name + "=" + "ListTasks[listCounter]" + ListTasks[listCounter]);
-        //print();
         ListTasks[listCounter].GetComponentInChildren<Text>().text = GameObjectClicked.name;
+        //print("GameObjectClicked.name)" + GameObjectClicked.name + "=" + "ListTasks[listCounter]" + ListTasks[listCounter]);
 
-        //increase counter to keep track of how many tasks are currently in the list
+        //
+        // 4. Increase counter to keep track of how many tasks are currently in the list
+        //
         listCounter++;
 
-
-        //list of type BUTTONS 
-        //if the name of the button is X then add X as the first element
-        //elemn1.Find component text = " X ";
-
-        //after that if the list button is pressed reactivate the initial button
-
-        // X not good X end (if list.count == 5) - are you happy with your task order - Yes = close to do list - No = go back (close the 
-        //  end (
-        //- Yes = turns off the buttons(maybe)
-    }
+        if(listCounter == ListTasks.Count)
+            ReadyPanel.SetActive(true); 
+        else
+            ReadyPanel.SetActive(false);
+        }
 
     public void DeleteTask()
     {
-        //Find which task was clicked
-
-        /* LONG WAY
-        string nameOfGameObjectClicked = EventSystem.current.currentSelectedGameObject.name;
-        //print(EventSystem.current.currentSelectedGameObject.name);
-        TaskScript = GameObject.Find(nameOfGameObjectClicked).GetComponent<TaskForList>();
-        clickedTaskCounter = TaskScript.counter;
-        */ 
-
-        // SHORTEST WAY
-        //clickedTaskCounter = EventSystem.current.currentSelectedGameObject.GetComponent<TaskForList>().counter;
+        //
+        // 1. Find which task was clicked
+        //
 
         GameObject GameObjectClicked = EventSystem.current.currentSelectedGameObject;
         clickedTaskCounter = GameObjectClicked.GetComponent<TaskForList>().counter;
         // print(clickedTaskCounter);
 
+        //
+        // 2. Make it reappear - search the thought bubble based on the task's text (the tasks in the list) 
+        //
 
-        //Make it reappear - search the thought bubble based on the list's task's text 
-        
         nameOfTask = GameObjectClicked.GetComponentInChildren<Text>().text;
-        /*
-        print(nameOfTask);
-        GameObject.Find(nameOfTask).SetActive(true);*/
+        gameObject.GetComponent<TasksReferences>().Activate(nameOfTask);
 
-        TheGameManager.GetComponent<TasksReferences>().Activate(nameOfTask);
-
-        //Delete it and move upwards the other tasks
+        //
+        // 3. Delete it and move upwards the other tasks
+        //
 
         for (int i = clickedTaskCounter-1; i < listCounter-1; i++)
         {
             ListTasks[i].GetComponentInChildren<Text>().text = ListTasks[i+1].GetComponentInChildren<Text>().text;
         }
-        ListTasks[listCounter-1].GetComponentInChildren<Text>().text = " ";
+        ListTasks[listCounter - 1].GetComponentInChildren<Text>().text = " ";
         ListTasks[listCounter - 1].SetActive(false);
-        
+
+        //
+        // 4. Decrease the number of elemnts in the list and also change the number that stores the order of the task
+        //
+
         listCounter--;
         numberOfClickedTasks--;
         //print(listCounter);
+
+        //
+        // 5. Deactivate the Ready panel
+        //
+
+        ReadyPanel.SetActive(false);
+    }
+
+    public void FinishedList()
+    {
+        for(int k = 0; k < ListTasks.Count; k++)
+        {
+            print("k =" + k + "ListTasks.Count = " + ListTasks.Count);
+            //print("ToDoList.Count" + gameObject.GetComponent<TheGameManager>().ToDoList[k]);
+            gameObject.GetComponent<TheGameManager>().ToDoList.Add(ListTasks[k]);
+            print(ListTasks[k].name);
+        }
     }
 }

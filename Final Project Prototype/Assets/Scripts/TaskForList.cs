@@ -11,7 +11,6 @@ public class TaskForList : MonoBehaviour
         
     }
 
-
     void Update()
     {
 

@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TheGameManager : MonoBehaviour
 {
+    //Panels
     public GameObject ThoughtBubblePanel;
     public GameObject ToDoListPanel;
     public GameObject CalendarPanel;
     public GameObject MessagePanel;
+
+    //
+    public TasksInOrder ListReferenceScript;
+    string nameOfTask;
+    public List<GameObject> ToDoList;
+    int sceneCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +25,9 @@ public class TheGameManager : MonoBehaviour
         ToDoListPanel.SetActive(false);
         CalendarPanel.SetActive(false);
         MessagePanel.SetActive(false);
+
+        ListReferenceScript = gameObject.GetComponent<TasksInOrder>();
+
     }
 
     // Update is called once per frame
@@ -52,5 +64,13 @@ public class TheGameManager : MonoBehaviour
             ToDoListPanel.SetActive(false);
             MessagePanel.SetActive(true);
         }
+
+    }
+
+    public void LoadScene()
+    {
+        string nameOfTask = ToDoList[sceneCounter].GetComponentInChildren<Text>().text;
+        SceneManager.LoadScene(nameOfTask);
+        sceneCounter++;
     }
 }
