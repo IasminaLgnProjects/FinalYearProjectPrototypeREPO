@@ -6,28 +6,43 @@ public class AnxietyMeter : MonoBehaviour
 {
     //GameObject[] AMparts;
     [SerializeField] List<GameObject> AMparts = new List<GameObject>();
-    int listSize;
+    int listIndex;
 
-    // Start is called before the first frame update
     void Start()
     {
-        foreach (GameObject i in AMparts)
-        {
-            listSize++;
+        foreach (GameObject part in AMparts)
+        { /*
+            if(part.activeSelf == true)
+            {
+                listSize++; //count all parts in the meter
+            }*/
+
+            part.SetActive(false);
         }
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        print(listIndex);
     }
 
     public void DecreaseAnxiety()
     {
-        //AMparts[AMparts.Count-1].SetActive(false); cannot use Count since you are not destroying the object
-        AMparts[listSize - 1].SetActive(false);
-        listSize--;
+
+        if(listIndex > 0)
+        {
+            listIndex--; //You decrease the index first because it went +1 too much when Increasing the anxiety
+            //AMparts[AMparts.Count-1].SetActive(false); cannot use Count since you are not destroying the object
+            AMparts[listIndex].SetActive(false);
+            
+        }
+    }
+
+    public void IncreaseAnxiety()
+    {
+        AMparts[listIndex].SetActive(true);
+        listIndex++;
+        //Second Test
     }
 }
