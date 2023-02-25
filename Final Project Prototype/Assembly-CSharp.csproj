@@ -63,8 +63,8 @@
     <Compile Include="Assets\Scripts\ToDoListreference.cs" />
     <Compile Include="Assets\Scripts\TextDialogue.cs" />
     <Compile Include="Assets\Scripts\TasksInOrder.cs" />
-    <Compile Include="Assets\Scripts\TaskForList.cs" />
     <Compile Include="Assets\Scripts\FirstThoughtsManager.cs" />
+    <Compile Include="Assets\Scripts\TaskForList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

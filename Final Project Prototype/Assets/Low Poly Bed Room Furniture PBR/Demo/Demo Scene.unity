@@ -3702,6 +3702,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1608533716}
+        m_TargetAssemblyTypeName: FirstThoughtsManager, Assembly-CSharp
+        m_MethodName: ReactivateRandom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &636769511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4191,6 +4203,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1658198585}
         m_TargetAssemblyTypeName: AnxietyMeter, Assembly-CSharp
         m_MethodName: DecreaseAnxiety
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1608533716}
+        m_TargetAssemblyTypeName: FirstThoughtsManager, Assembly-CSharp
+        m_MethodName: ReactivateRandom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8753,6 +8777,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1608533716}
+        m_TargetAssemblyTypeName: FirstThoughtsManager, Assembly-CSharp
+        m_MethodName: ReactivateRandom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1366546614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8890,6 +8926,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1658198585}
         m_TargetAssemblyTypeName: AnxietyMeter, Assembly-CSharp
         m_MethodName: DecreaseAnxiety
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1608533716}
+        m_TargetAssemblyTypeName: FirstThoughtsManager, Assembly-CSharp
+        m_MethodName: ReactivateRandom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10586,6 +10634,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1608533716}
+        m_TargetAssemblyTypeName: FirstThoughtsManager, Assembly-CSharp
+        m_MethodName: ReactivateRandom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1588708574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10794,6 +10854,7 @@ MonoBehaviour:
   - {fileID: 677147941}
   - {fileID: 1388996194}
   - {fileID: 636769508}
+  ListInactiveThoughts: []
   ListText:
   - {fileID: 1709378653}
   - {fileID: 1571209802}
@@ -10803,6 +10864,8 @@ MonoBehaviour:
   TextWhatDay: {fileID: 0}
   ClickPanel: {fileID: 792228702}
   CalmDownText: {fileID: 1666002936}
+  alreadyReappeared: 0
+  nrClicksToReappear: 3
 --- !u!4 &1608533717
 Transform:
   m_ObjectHideFlags: 0

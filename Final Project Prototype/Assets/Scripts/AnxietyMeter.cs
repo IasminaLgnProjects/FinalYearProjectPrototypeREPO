@@ -24,7 +24,8 @@ public class AnxietyMeter : MonoBehaviour
 
     void Update()
     {
-        print(listIndex);
+        //print(listIndex);
+        print("list index ANXIETY " + listIndex);
     }
 
     public void DecreaseAnxiety()
@@ -43,6 +44,11 @@ public class AnxietyMeter : MonoBehaviour
     {
         AMparts[listIndex].SetActive(true);
         listIndex++;
-        //Second Test
+
     }
+
+    public int GetListCount() //instead of making the list public
+    {
+        return AMparts.Count;
+    }    
 }
