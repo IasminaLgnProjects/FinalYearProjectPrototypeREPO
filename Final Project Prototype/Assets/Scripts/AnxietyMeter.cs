@@ -25,7 +25,7 @@ public class AnxietyMeter : MonoBehaviour
     void Update()
     {
         //print(listIndex);
-        print("list index ANXIETY " + listIndex);
+        //print("list index ANXIETY " + listIndex);
     }
 
     public void DecreaseAnxiety()

@@ -6,24 +6,28 @@ using UnityEngine.EventSystems;
 
 public class FirstThoughtsManager : MonoBehaviour
 {
-    //list of thoughts 
-    //list of ialogue
-    //invoke function that calls 3 functions: 
-    // 1. activate button
-    // 2. activate coresp dialogue text 
-    // 3. increase anxiety
-
     //Make then private and turn them back to 2.5 and 2
 
+    //Lists
     [SerializeField] List<GameObject> ListThoughts;
     [SerializeField] List<GameObject> ListInactiveThoughts;
     [SerializeField] List<GameObject> ListText;
+
+    //UI Panels
+    [SerializeField] GameObject ThoughtsPanel;
+    [SerializeField] GameObject InstructionsPanel;
+    //[SerializeField] GameObject CalmDownText;
+
+    //UI Text
+    [SerializeField] GameObject DialogueBox;
     [SerializeField] GameObject TextWhatDay; //have it on the panel so that when it is activated this activates as well
+
+    //The Game Manager reference 
     TheGameManager TGMScript;
-    [SerializeField] GameObject ClickPanel;
-    [SerializeField] GameObject CalmDownText;
-    public int alreadyReappeared; //make them private
-    public int nrClicksToReappear = 3;
+
+    //Int
+    int alreadyReappeared; 
+    int nrClicksToReappear = 3;
 
     void Start()
     {
@@ -41,15 +45,24 @@ public class FirstThoughtsManager : MonoBehaviour
         }
 
         //hide all panels
-        ClickPanel.SetActive(false);
-        CalmDownText.SetActive(false);
+        InstructionsPanel.SetActive(false);
+        //CalmDownText.SetActive(false);
+        TextWhatDay.SetActive(false);
+        DialogueBox.SetActive(false);
 
         StartCoroutine("All");
     }
 
     IEnumerator All()
     {
+        yield return new WaitForSeconds(2); //as much as it needs for the player to wake up
+
+        DialogueBox.SetActive(true);
+        TextWhatDay.SetActive(true);
+
         yield return new WaitForSeconds(2);
+        TextWhatDay.SetActive(false);
+
         for (int i = 0; i < ListThoughts.Count; i++)
         {
             //ActivateText
@@ -77,17 +90,23 @@ public class FirstThoughtsManager : MonoBehaviour
         yield return new WaitForSeconds(2); //4 seconds in total at the end
 
         //CalmDown
-        CalmDownText.SetActive(true);
+        //CalmDownText.SetActive(true);
         ListText[ListText.Count - 1].SetActive(false); //last text hidden
+        DialogueBox.GetComponentInChildren<Text>().text = "Shh... Calm down... Firstly just breathe and try to make these thoughts go away";
 
         //Breathing sounds
 
         //Wait
         //yield return new WaitForSeconds(4); 
 
-        //Instructions + Activate buttons
-        ClickPanel.SetActive(true);
+        //Instructions 
+        InstructionsPanel.SetActive(true);
+        InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to make it disappear*";
+
+        //Activate buttons
         ActivateButtons();
+
+
 
         yield return null;
     }
@@ -144,6 +163,21 @@ public class FirstThoughtsManager : MonoBehaviour
 
             alreadyReappeared++;  //the buttons appear only 3 times
             nrClicksToReappear++; //First appear after 3 buttons clicked, then after 4, then after all 5 
+        }
+
+        if (ListInactiveThoughts.Count == 1)
+        {
+            print("DONE");
+
+            //deactivate all panels
+            ThoughtsPanel.SetActive(false);
+            //InstructionsPanel.SetActive(false);
+            //CalmDownText.SetActive(false);
+
+            DialogueBox.GetComponentInChildren<Text>().text = "Now I can find a solution";
+
+            //unlock camera
+            InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
         }
     }
 }
