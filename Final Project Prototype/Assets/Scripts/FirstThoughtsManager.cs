@@ -24,6 +24,8 @@ public class FirstThoughtsManager : MonoBehaviour
 
     //The Game Manager reference 
     TheGameManager TGMScript;
+    [SerializeField] FirstPersonCamera CameraScript;
+    [SerializeField] GameObject Calendar;
 
     //Int
     int alreadyReappeared; 
@@ -50,17 +52,23 @@ public class FirstThoughtsManager : MonoBehaviour
         TextWhatDay.SetActive(false);
         DialogueBox.SetActive(false);
 
+        Calendar.GetComponent<Collider>().enabled = false;
+
         StartCoroutine("All");
     }
 
     IEnumerator All()
     {
-        //yield return new WaitForSeconds(2); //as much as it needs for the player to wake up
+        yield return new WaitForSeconds(8); //as much as it needs for the player to wake up
 
+        //Lock Camera
+        CameraScript.mouseSens = 0f;
+
+        //Show dialogue box
         DialogueBox.SetActive(true);
         TextWhatDay.SetActive(true);
 
-        //yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2);
         TextWhatDay.SetActive(false);
 
         for (int i = 0; i < ListThoughts.Count; i++)
@@ -69,7 +77,7 @@ public class FirstThoughtsManager : MonoBehaviour
             ShowText(i);
 
             //Wait
-            //yield return new WaitForSeconds(2.5f); //B 2.5
+            yield return new WaitForSeconds(2.5f); //B 2.5
 
             //ActivateButton
             ShowButton(i);
@@ -81,13 +89,13 @@ public class FirstThoughtsManager : MonoBehaviour
             IncreaseAnxietyMeter();
 
             //Wait until repeat
-            //yield return new WaitForSeconds(2); //B 2
+            yield return new WaitForSeconds(2); //B 2
         }
 
         //heart racing sounds
 
         //Wait
-        //yield return new WaitForSeconds(2); //4 seconds in total at the end
+        yield return new WaitForSeconds(2); //4 seconds in total at the end
 
         //CalmDown
         //CalmDownText.SetActive(true);
@@ -97,7 +105,7 @@ public class FirstThoughtsManager : MonoBehaviour
         //Breathing sounds
 
         //Wait
-        //yield return new WaitForSeconds(4); 
+        yield return new WaitForSeconds(4); 
 
         //Instructions 
         InstructionsPanel.SetActive(true);
@@ -105,8 +113,6 @@ public class FirstThoughtsManager : MonoBehaviour
 
         //Activate buttons
         ActivateButtons();
-
-
 
         yield return null;
     }
@@ -165,7 +171,7 @@ public class FirstThoughtsManager : MonoBehaviour
             nrClicksToReappear++; //First appear after 3 buttons clicked, then after 4, then after all 5 
         }
 
-        if (ListInactiveThoughts.Count == 4) //make this 5
+        if (ListInactiveThoughts.Count == 5) //make this 5
         {
             print("DONE");
 
@@ -178,6 +184,11 @@ public class FirstThoughtsManager : MonoBehaviour
 
             //unlock camera
             InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
+
+            //Unlock camera
+            CameraScript.mouseSens = 2.5f;
+
+            Calendar.GetComponent<Collider>().enabled = true;
         }
     }
 }

@@ -103,7 +103,7 @@ public class ClickedCalendar : MonoBehaviour
         DialogueBox.GetComponentInChildren<Text>().text = "Thankfully I made this calendar to help me keep track of the things I have to do";
 
         //Wait
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
 
         MessageIcon.SetActive(true);
         //In case the player will press tab beforehand (unlikely to happen) you can add a bool here that becomes true in this stage and above in Update you check if Tab was pressed -> if bool is true
@@ -111,7 +111,7 @@ public class ClickedCalendar : MonoBehaviour
         //sound
 
         //Wait
-        //yield return new WaitForSeconds(5); UNCOMMENT
+        yield return new WaitForSeconds(6); 
 
         //Start the second part
         //STMScript.GetComponent<SecondThgTasksManager>().StartCoroutine("SecondThgtTasksCoroutine"); DELETE

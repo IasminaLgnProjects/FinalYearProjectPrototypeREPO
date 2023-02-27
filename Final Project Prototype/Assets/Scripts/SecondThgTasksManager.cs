@@ -16,9 +16,6 @@ public class SecondThgTasksManager : MonoBehaviour
         "And also work on my assignment! I can't leave everything until last minute"
     };
 
-    List<string> optionList = new List<string>
-            { "AdditionalCardPersonAdressType", /* rest of elements */ };
-
     public bool triedClicking; //make this private
 
     [SerializeField] GameObject NotWorkingButtons;
@@ -75,7 +72,7 @@ public class SecondThgTasksManager : MonoBehaviour
             ShowText(i);
 
             //Wait
-            //yield return new WaitForSeconds(2.5f); //B 2.5
+            yield return new WaitForSeconds(2.5f); //B 2.5
 
             //ActivateButton
             ShowButton(i);
@@ -87,7 +84,7 @@ public class SecondThgTasksManager : MonoBehaviour
             IncreaseAnxietyMeter();
 
             //Wait until repeat
-            //yield return new WaitForSeconds(2); //B 2
+            yield return new WaitForSeconds(2); //B 2
         }
 
         //Calm down text 
@@ -152,7 +149,7 @@ public class SecondThgTasksManager : MonoBehaviour
             //IncreaseAnxietyMeter(); //twice
             //heard racing sounds
             //triedClicking = true;
-            Invoke("ToDoList", 4); //maybe increase
+            Invoke("ToDoList", 7); //maybe increase
         }
     }
 
