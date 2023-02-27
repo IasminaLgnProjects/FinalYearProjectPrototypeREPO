@@ -69,7 +69,7 @@ public class TheGameManager : MonoBehaviour
 
     public void LoadScene()
     {
-        string nameOfTask = ToDoList[sceneCounter].GetComponentInChildren<Text>().text;
+        string nameOfTask = ToDoList[sceneCounter].GetComponentInChildren<Text>().text; //the name of the Thought Bubble should be the name of the Scene Loaded
         SceneManager.LoadScene(nameOfTask);
         sceneCounter++;
     }

@@ -55,12 +55,12 @@ public class FirstThoughtsManager : MonoBehaviour
 
     IEnumerator All()
     {
-        yield return new WaitForSeconds(2); //as much as it needs for the player to wake up
+        //yield return new WaitForSeconds(2); //as much as it needs for the player to wake up
 
         DialogueBox.SetActive(true);
         TextWhatDay.SetActive(true);
 
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
         TextWhatDay.SetActive(false);
 
         for (int i = 0; i < ListThoughts.Count; i++)
@@ -87,7 +87,7 @@ public class FirstThoughtsManager : MonoBehaviour
         //heart racing sounds
 
         //Wait
-        yield return new WaitForSeconds(2); //4 seconds in total at the end
+        //yield return new WaitForSeconds(2); //4 seconds in total at the end
 
         //CalmDown
         //CalmDownText.SetActive(true);
@@ -165,7 +165,7 @@ public class FirstThoughtsManager : MonoBehaviour
             nrClicksToReappear++; //First appear after 3 buttons clicked, then after 4, then after all 5 
         }
 
-        if (ListInactiveThoughts.Count == 1)
+        if (ListInactiveThoughts.Count == 4) //make this 5
         {
             print("DONE");
 

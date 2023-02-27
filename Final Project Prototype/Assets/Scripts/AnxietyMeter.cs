@@ -42,9 +42,11 @@ public class AnxietyMeter : MonoBehaviour
 
     public void IncreaseAnxiety()
     {
-        AMparts[listIndex].SetActive(true);
-        listIndex++;
-
+        if(listIndex < AMparts.Count)
+        {
+            AMparts[listIndex].SetActive(true);
+            listIndex++;
+        }
     }
 
     public int GetListCount() //instead of making the list public

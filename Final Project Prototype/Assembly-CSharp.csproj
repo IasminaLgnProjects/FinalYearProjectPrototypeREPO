@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\AnxietyMeter.cs" />
+    <Compile Include="Assets\Scripts\ClickedCalendar.cs" />
     <Compile Include="Assets\Scripts\TasksReferences.cs" />
     <Compile Include="Assets\Scripts\TheGameManager.cs" />
     <Compile Include="Assets\Scripts\ToDoListreference.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Assets\Scripts\TasksInOrder.cs" />
     <Compile Include="Assets\Scripts\FirstThoughtsManager.cs" />
     <Compile Include="Assets\Scripts\TaskForList.cs" />
-    <Compile Include="Assets\Scripts\ClickedCalendar.cs" />
+    <Compile Include="Assets\Scripts\SecondThgTasksManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

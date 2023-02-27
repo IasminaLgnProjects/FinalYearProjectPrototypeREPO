@@ -17,11 +17,11 @@ public class ClickedCalendar : MonoBehaviour
 
     [SerializeField] GameObject DialogueBox;
     [SerializeField] GameObject InstructionsPanel;
-
+    [SerializeField] GameObject AnxietyMeterPanel;
 
     bool tabOpened;
 
-
+    [SerializeField] SecondThgTasksManager STMScript;
 
     // Start is called before the first frame update
     void Start()
@@ -36,23 +36,60 @@ public class ClickedCalendar : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Tab))
         {
+            //might want to put all into a single if
+            //OLD ONES
+            
+            /*
             if (tabOpened)
                 tabOpened = false;
             else
                 tabOpened = true;
+            */
 
-            if (!tabOpened)
+            //OpenTabPanel();
+            //PauseGame();
+
+
+            if (tabOpened)
+            {
+                
                 TABPanel.SetActive(true);
+                Time.timeScale = 0f; //pause game
+                print("freeze");
+                tabOpened = false;
+            }
             else
+            {
+                
                 TABPanel.SetActive(false);
-
+                MessageIcon.SetActive(false);
+                Time.timeScale = 1f;
+                tabOpened = true;
+            }
         }
     }
+
+    /*
+    void OpenTabPanel()
+    {
+         if (tabOpened)
+            TABPanel.SetActive(true);
+         else
+            TABPanel.SetActive(false);
+    }
+
+    void PauseGame()
+    {
+        if(tabOpened)
+            Time.timeScale = 0f;
+        else
+            Time.timeScale = 1f;
+    }*/
 
     private void OnMouseDown()
     {
         StartCoroutine("CalendarCoroutine");
-
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 
     IEnumerator CalendarCoroutine()
@@ -60,6 +97,7 @@ public class ClickedCalendar : MonoBehaviour
         print("clicked");
         InstructionsPanel.SetActive(false);
         CalendarPanel.SetActive(true);
+        AnxietyMeterPanel.SetActive(false); //hide anxiety meter
 
         //Dialogue appears
         DialogueBox.GetComponentInChildren<Text>().text = "Thankfully I made this calendar to help me keep track of the things I have to do";
@@ -68,10 +106,21 @@ public class ClickedCalendar : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         MessageIcon.SetActive(true);
-        
+        //In case the player will press tab beforehand (unlikely to happen) you can add a bool here that becomes true in this stage and above in Update you check if Tab was pressed -> if bool is true
+
         //sound
 
-        yield return new WaitForSeconds(2);
+        //Wait
+        //yield return new WaitForSeconds(5); UNCOMMENT
+
+        //Start the second part
+        //STMScript.GetComponent<SecondThgTasksManager>().StartCoroutine("SecondThgtTasksCoroutine"); DELETE
+        STMScript.StartCoroutine("SecondThgtTasksCoroutine");
+        
+        //Show anxiety meter
+        AnxietyMeterPanel.SetActive(true);
+
         yield return null;
+        //first test
     }
 }
