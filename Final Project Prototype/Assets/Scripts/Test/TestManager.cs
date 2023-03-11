@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TestManager : MonoBehaviour
 {
-    public List<QuestionsAndAnswers> Test;
+    public List<QuestionsAndAnswers> Test; //see which one to make Serializefield
     public List<GameObject> buttons;
     public int currentQ = 0;
     public Text textQuestion;
