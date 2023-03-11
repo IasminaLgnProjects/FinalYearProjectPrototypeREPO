@@ -14,9 +14,9 @@ public class TheGameManager : MonoBehaviour
 
     //
     public TasksInOrder ListReferenceScript;
-    string nameOfTask;
+    //string nameOfTask;
     public List<GameObject> ToDoList;
-    int sceneCounter;
+    int oldSceneCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -65,12 +65,5 @@ public class TheGameManager : MonoBehaviour
             MessagePanel.SetActive(true);
         }
 
-    }
-
-    public void LoadScene()
-    {
-        string nameOfTask = ToDoList[sceneCounter].GetComponentInChildren<Text>().text; //the name of the Thought Bubble should be the name of the Scene Loaded
-        SceneManager.LoadScene(nameOfTask);
-        sceneCounter++;
     }
 }

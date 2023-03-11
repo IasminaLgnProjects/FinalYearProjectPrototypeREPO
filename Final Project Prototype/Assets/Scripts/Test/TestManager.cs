@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TestManager : MonoBehaviour
 {
+    //You'll have to add a game completion panel and then redirect to Test "Start test" button 
+
+
     public List<QuestionsAndAnswers> Test; //see which one to make Serializefield
     public List<GameObject> buttons;
     public int currentQ = 0;
     public Text textQuestion;
 
-    int correctAnswersClicked;
-
     //UI
     [SerializeField] GameObject EndPanel;
+
+    //Score
+    int correctAnswersClicked;
+
+    //Message
+    [SerializeField] List<string> Results;
+    [SerializeField] Text Message;
+
 
     void Start()
     {
@@ -50,12 +60,13 @@ public class TestManager : MonoBehaviour
 
     public void CorrectAnswerSelected()
     {
+        correctAnswersClicked++;
+
         if (currentQ < Test.Count - 1)
             currentQ++;
         else
             EndTest();
 
-        correctAnswersClicked++;
         WriteQuestion();
     }
 
@@ -72,8 +83,23 @@ public class TestManager : MonoBehaviour
     void EndTest()
     {
         EndPanel.SetActive(true);
-        EndPanel.GetComponentInChildren<Text>().text = correctAnswersClicked.ToString() + " / 3"; //change to 5 when adding all 5 
+        EndPanel.GetComponentInChildren<Text>().text = correctAnswersClicked.ToString() + " / " + Test.Count + " right answers";
+        
+        if(correctAnswersClicked <= Test.Count/2)
+            Message.text = Results[0];
+        else if (correctAnswersClicked > Test.Count / 2 && correctAnswersClicked < Test.Count)
+            Message.text = Results[1];
+        else
+            Message.text = Results[2];
     }
 
-    //maybe void for wrong answer
+    public void Retry()
+    {
+        SceneManager.LoadScene("Test");
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene("FirstPanelScene");
+    }
 }

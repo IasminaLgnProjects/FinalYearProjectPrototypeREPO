@@ -110,14 +110,12 @@ public class TasksInOrder : MonoBehaviour
         ReadyPanel.SetActive(false);
     }
 
-    public void FinishedList()
+    public void SaveList()
     {
-        for(int k = 0; k < ListTasks.Count; k++)
+        for (int k = 0; k < ListTasks.Count; k++)
         {
             print("k =" + k + "ListTasks.Count = " + ListTasks.Count);
-            //print("ToDoList.Count" + gameObject.GetComponent<TheGameManager>().ToDoList[k]);
-            gameObject.GetComponent<TheGameManager>().ToDoList.Add(ListTasks[k]);
-            print(ListTasks[k].name);
+            KeepBetweenScenes.ListTaskName[k] = ListTasks[k].GetComponentInChildren<Text>().text;
         }
     }
 }

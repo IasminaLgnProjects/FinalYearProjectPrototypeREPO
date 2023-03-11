@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\TasksReferences.cs" />
     <Compile Include="Assets\Scripts\Test\TestManager.cs" />
     <Compile Include="Assets\Scripts\TheGameManager.cs" />
+    <Compile Include="Assets\Scripts\LoadScene.cs" />
+    <Compile Include="Assets\Scripts\FirstSceneManager.cs" />
     <Compile Include="Assets\Scripts\ToDoListreference.cs" />
     <Compile Include="Assets\Scripts\TextDialogue.cs" />
     <Compile Include="Assets\Scripts\Test\CorrectAnswer.cs" />
@@ -70,8 +72,7 @@
     <Compile Include="Assets\Scripts\TasksInOrder.cs" />
     <Compile Include="Assets\Scripts\FirstThoughtsManager.cs" />
     <Compile Include="Assets\Scripts\TaskForList.cs" />
-    <Compile Include="Assets\Scripts\LoadScene.cs" />
-    <Compile Include="Assets\Scripts\FirstSceneManager.cs" />
+    <Compile Include="Assets\Scripts\KeepBetweenScenes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

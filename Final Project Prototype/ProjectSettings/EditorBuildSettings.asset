@@ -6,9 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FirstPanelScene.unity
+    guid: f91ceef7d126b5e43b6042cf85f9c55d
+  - enabled: 1
     path: Assets/Low Poly Bed Room Furniture PBR/Demo/Demo Scene.unity
     guid: f9163f1f93df1b543838b03f441acb9e
   - enabled: 1
     path: Assets/Scenes/Message Lisa.unity
-    guid: 6ace421ab195e534c90f2e6aaa858d14
+    guid: 9ca95f65c250062489ccd4bb3bc67b1b
+  - enabled: 1
+    path: Assets/Scenes/Assignment.unity
+    guid: 4ff3ec405576d644c9e5b24313b1ee93
+  - enabled: 1
+    path: Assets/Scenes/Study.unity
+    guid: 7e267e4028541d44aaaddbfa2a164ae1
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: e25041b2f2d60b84995adc4bc027c638
+  - enabled: 1
+    path: Assets/Scenes/EndPanelScene.unity
+    guid: 396dca7823b6c8e4a8737434948467ff
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
