@@ -29,7 +29,7 @@ public class FirstPersonCamera : MonoBehaviour
             cameraRotationVert = Mathf.Clamp(cameraRotationVert, -90, 90);
      
             cameraRotationHorz += inputX;
-            cameraRotationHorz = Mathf.Clamp(cameraRotationHorz, -90, 90);
+            cameraRotationHorz = Mathf.Clamp(cameraRotationHorz, -95, 95);
 
             transform.localEulerAngles = Vector3.right * cameraRotationVert + Vector3.up * cameraRotationHorz;
         }

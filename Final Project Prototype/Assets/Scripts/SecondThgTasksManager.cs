@@ -11,21 +11,25 @@ public class SecondThgTasksManager : MonoBehaviour
     public string DialogueText; //make this private
     List<string> ListDialogueText = new List<string>
     {
-        "Which means I have to wish her happy birthday",
-        "But the exam is so close... I really need to study",
-        "And also work on my assignment! I can't leave everything until last minute"
+        "Which means I have to wish her happy birthday. I can't wait any longer or she'll think I forgot!",
+        "The exam is so close... I really need to study, I have been procrastinating too much!",
+        "Oh no I also have to work on my assignment! I can't leave everything until last minute again..."
     };
 
     public bool triedClicking; //make this private
 
     [SerializeField] GameObject NotWorkingButtons;
-    [SerializeField] GameObject ToDoListPanel;
+    //[SerializeField] GameObject ToDoListPanel;
 
     [SerializeField] GameObject InstructionsPanel;
     [SerializeField] GameObject AnxietyMeterPanel;
+    [SerializeField] GameObject CalendarPanel;
 
     //The Game Manager reference 
     TheGameManager TGMScript;
+
+    //ToDoList
+    [SerializeField] Collider notepadCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +44,10 @@ public class SecondThgTasksManager : MonoBehaviour
         }
 
         NotWorkingButtons.SetActive(false);
-        ToDoListPanel.SetActive(false);
+        //ToDoListPanel.SetActive(false);
+
+        //notepadCollider.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -149,19 +156,18 @@ public class SecondThgTasksManager : MonoBehaviour
             //IncreaseAnxietyMeter(); //twice
             //heard racing sounds
             //triedClicking = true;
-            Invoke("ToDoList", 7); //maybe increase
+            //Invoke("ToDoList", 7); //maybe increase
+
+            Invoke("LookForToDoList", 3); //maybe increase
         }
     }
 
-    void ToDoList()
+    void LookForToDoList()
     {
-        AnxietyMeterPanel.SetActive(false);
+        CalendarPanel.SetActive(false);
         NotWorkingButtons.SetActive(false);
-        ToDoListPanel.SetActive(true);
-
-        DialogueBox.GetComponentInChildren<Text>().text = "I know! I can just add them into a To Do List to be sure I don't forget any";
-
-        InstructionsPanel.SetActive(true);
-        InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to add it in the list. Once in list click to remove it.*";
+        AnxietyMeterPanel.SetActive(false);
+        notepadCollider.enabled = true;
+        InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
     }
 }

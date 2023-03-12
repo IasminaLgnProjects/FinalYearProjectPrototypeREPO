@@ -47,14 +47,17 @@ public class FirstThoughtsManager : MonoBehaviour
         }
 
         //hide all panels
-        InstructionsPanel.SetActive(false);
+        
         //CalmDownText.SetActive(false);
         TextWhatDay.SetActive(false);
-        DialogueBox.SetActive(false);
 
-        Calendar.GetComponent<Collider>().enabled = false;
 
-        StartCoroutine("All");
+        //InstructionsPanel.SetActive(false);
+        //DialogueBox.SetActive(false);
+
+        //Calendar.GetComponent<Collider>().enabled = false;
+
+        //StartCoroutine("All");
     }
 
     IEnumerator All()

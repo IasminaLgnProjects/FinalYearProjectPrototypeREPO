@@ -86,6 +86,12 @@ public class ClickedCalendar : MonoBehaviour
             Time.timeScale = 1f;
     }*/
 
+
+    private void OnMouseOver()
+    {
+        print("overCalendar");
+    }
+
     private void OnMouseDown()
     {
         StartCoroutine("CalendarCoroutine");
