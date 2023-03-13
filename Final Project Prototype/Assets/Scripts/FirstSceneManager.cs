@@ -46,6 +46,6 @@ public class FirstSceneManager : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene("Demo Scene");
+        SceneManager.LoadScene("FirstScene");
     }
 }

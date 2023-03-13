@@ -22,7 +22,8 @@ public class FirstPersonCamera : MonoBehaviour
         inputX = Input.GetAxis("Mouse X") * mouseSens;
         inputY = Input.GetAxis("Mouse Y") * mouseSens;
 
-        if(SceneManager.GetActiveScene().name == "Demo Scene") //deals with both VERT and HOR movement since the player can't move
+        //deals with both VERT and HOR movement since the player can't move
+        if(SceneManager.GetActiveScene().name == "FirstScene") //used to be Demo Scene
         {
             //make it rotate on the X axis (vertical) and Y axis (vertical)
             cameraRotationVert -= inputY;

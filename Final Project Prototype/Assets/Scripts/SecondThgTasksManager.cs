@@ -35,6 +35,7 @@ public class SecondThgTasksManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        notepadCollider.enabled = false;
         //TGMScript = GameObject.Find("TheGameManager").GetComponent<TheGameManager>();
         TGMObject = GameObject.Find("TheGameManager");
         DialogueText = DialogueBox.GetComponentInChildren<Text>().text;

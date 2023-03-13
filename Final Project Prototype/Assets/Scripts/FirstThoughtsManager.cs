@@ -52,12 +52,12 @@ public class FirstThoughtsManager : MonoBehaviour
         TextWhatDay.SetActive(false);
 
 
-        //InstructionsPanel.SetActive(false);
-        //DialogueBox.SetActive(false);
+        InstructionsPanel.SetActive(false);
+        DialogueBox.SetActive(false);
 
-        //Calendar.GetComponent<Collider>().enabled = false;
+        Calendar.GetComponent<Collider>().enabled = false;
 
-        //StartCoroutine("All");
+        StartCoroutine("All");
     }
 
     IEnumerator All()
