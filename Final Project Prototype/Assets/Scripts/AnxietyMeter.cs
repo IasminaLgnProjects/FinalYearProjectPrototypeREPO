@@ -49,6 +49,16 @@ public class AnxietyMeter : MonoBehaviour
         }
     }
 
+    public void ResetAnxietyMeter()
+    {
+        foreach (GameObject part in AMparts)
+        {
+            part.SetActive(false);
+            listIndex = 0;
+        }
+
+    }
+
     public int GetListCount() //instead of making the list public
     {
         return AMparts.Count;

@@ -26,7 +26,8 @@ public class SecondThgTasksManager : MonoBehaviour
     [SerializeField] GameObject CalendarPanel;
 
     //The Game Manager reference 
-    TheGameManager TGMScript;
+    //TheGameManager TGMScript;
+    GameObject TGMObject;
 
     //ToDoList
     [SerializeField] Collider notepadCollider;
@@ -34,7 +35,8 @@ public class SecondThgTasksManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TGMScript = GameObject.Find("TheGameManager").GetComponent<TheGameManager>();
+        //TGMScript = GameObject.Find("TheGameManager").GetComponent<TheGameManager>();
+        TGMObject = GameObject.Find("TheGameManager");
         DialogueText = DialogueBox.GetComponentInChildren<Text>().text;
 
         foreach (GameObject thought in ListNoninteractiveButtons)
@@ -136,7 +138,7 @@ public class SecondThgTasksManager : MonoBehaviour
 
     void IncreaseAnxietyMeter()
     {
-        TGMScript.GetComponent<AnxietyMeter>().IncreaseAnxiety();
+        TGMObject.GetComponent<AnxietyMeter>().IncreaseAnxiety();
     }
 
     void ActivateButtons()
