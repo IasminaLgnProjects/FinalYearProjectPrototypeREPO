@@ -15,8 +15,10 @@ public class TestManager : MonoBehaviour
     public Text textQuestion;
 
     //UI
+    
+    [SerializeField] GameObject CongratsPanel;
+    [SerializeField] GameObject TestPanel;
     [SerializeField] GameObject EndPanel;
-
     //Score
     int correctAnswersClicked;
 
@@ -28,12 +30,19 @@ public class TestManager : MonoBehaviour
     void Start()
     {
         EndPanel.SetActive(false);
+        TestPanel.SetActive(false);
         WriteQuestion();
     }
 
     void Update()
     {
         
+    }
+
+    public void StartTest()
+    {
+        CongratsPanel.SetActive(false);
+        TestPanel.SetActive(true);
     }
 
     void WriteQuestion()
