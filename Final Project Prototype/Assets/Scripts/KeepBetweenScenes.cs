@@ -16,7 +16,7 @@ public class KeepBetweenScenes : MonoBehaviour
 
     void Update()
     {
-        print("sceneCounter " + sceneCounter);
+        //print("sceneCounter " + sceneCounter);
         //for(int i = 0; i < ListTaskName.Count; i++)
         //    print("task " + i + " name " + ListTaskName[i]);
     }

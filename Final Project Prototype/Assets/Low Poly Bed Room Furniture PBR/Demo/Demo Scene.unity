@@ -1665,7 +1665,7 @@ MonoBehaviour:
   InstructionsPanel: {fileID: 792228702}
   AnxietyMeterPanel: {fileID: 278546914}
   CalendarPanel: {fileID: 1139481877}
-  notepadCollider: {fileID: 257380345}
+  notepadCollider: {fileID: 0}
 --- !u!4 &205510324
 Transform:
   m_ObjectHideFlags: 0
@@ -2371,42 +2371,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 541818b46c99d914e8ca8bf071c2bd7e, type: 3}
---- !u!1 &257380343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: adfb61045abc9ad45acfec4b407a1f16, type: 3}
-  m_PrefabInstance: {fileID: 1910981114}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &257380345
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257380343}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.005269637, y: 0.0018203272, z: 0.0066393325}
-  m_Center: {x: 0.00043665088, y: 0.00082208106, z: -0.00020470629}
---- !u!114 &257380346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257380343}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6374924585b2d4a99c16af68b05b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DialogueBox: {fileID: 1990291815}
-  DialogueText: 
-  NotWorkingButtons: {fileID: 2127398717}
-  ToDoListPanel: {fileID: 794941716}
-  InstructionsPanel: {fileID: 792228702}
-  AnxietyMeterPanel: {fileID: 278546914}
 --- !u!4 &257380347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: adfb61045abc9ad45acfec4b407a1f16, type: 3}

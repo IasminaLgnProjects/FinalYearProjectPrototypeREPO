@@ -32,7 +32,7 @@ public class ClickedPhone : MonoBehaviour
         DialogueBox.SetActive(false); //might want to comment this
 
         //Reference to the Anxiety Meter
-        AMScript = GameObject.Find("TheGameManager").GetComponent<AnxietyMeter>();
+        AMScript = GameObject.Find("StudySceneManager").GetComponent<AnxietyMeter>();
     }
 
     // Update is called once per frame
