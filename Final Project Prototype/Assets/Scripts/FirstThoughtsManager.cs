@@ -20,20 +20,25 @@ public class FirstThoughtsManager : MonoBehaviour
 
     //UI Text
     [SerializeField] GameObject DialogueBox;
-    [SerializeField] GameObject TextWhatDay; //have it on the panel so that when it is activated this activates as well
+    //[SerializeField] GameObject TextWhatDay; //have it on the panel so that when it is activated this activates as well
 
     //The Game Manager reference 
     TheGameManager TGMScript;
     [SerializeField] FirstPersonCamera CameraScript;
     [SerializeField] GameObject Calendar;
+    TABMechanic ScriptTABMechanic;
 
     //Int
     int alreadyReappeared; 
     int nrClicksToReappear = 3;
 
+    //animator
+    [SerializeField] Animator anim;
+
     void Start()
     {
         TGMScript = GameObject.Find("TheGameManager").GetComponent<TheGameManager>();
+        ScriptTABMechanic = GameObject.Find("TheGameManager").GetComponent<TABMechanic>();
 
         //hide all text
         foreach (GameObject text in ListText)
@@ -49,7 +54,7 @@ public class FirstThoughtsManager : MonoBehaviour
         //hide all panels
         
         //CalmDownText.SetActive(false);
-        TextWhatDay.SetActive(false);
+        //TextWhatDay.SetActive(false);
 
 
         InstructionsPanel.SetActive(false);
@@ -62,17 +67,43 @@ public class FirstThoughtsManager : MonoBehaviour
 
     IEnumerator All()
     {
-        yield return new WaitForSeconds(8); //as much as it needs for the player to wake up
+        
+        yield return new WaitForSeconds(3);
+
+        //dialogue
+        DialogueBox.SetActive(true);
+        DialogueBox.GetComponentInChildren<Text>().text = "I can’t believe it’s been 9 months since I started my final year of uni and my part-time job… when my anxiety became so much worse...";
+        
+        yield return new WaitForSeconds(6);
+        DialogueBox.GetComponentInChildren<Text>().text = "But I believe I have improved a lot in those 3 months of therapy with Ms Evans.";
+
+        yield return new WaitForSeconds(5);
+
+        //Message
+        ScriptTABMechanic.ShowMessageIcon();
+        //add sound
+        TABMechanic.index = 4;
+
+        DialogueBox.GetComponentInChildren<Text>().text = "Oh, she just sent me a message! I should check it.";
+
+        //Animation
+        yield return new WaitForSeconds(5);
+        anim.SetBool("GetUp", true);
+
+        //Wait for animation
+        yield return new WaitForSeconds(10); //as much as it needs for the player to wake up
 
         //Lock Camera
         CameraScript.mouseSens = 0f;
 
         //Show dialogue box
-        DialogueBox.SetActive(true);
-        TextWhatDay.SetActive(true);
+
+        //TextWhatDay.SetActive(true);
+        DialogueBox.GetComponentInChildren<Text>().text = "What day is it today?";
 
         yield return new WaitForSeconds(2);
-        TextWhatDay.SetActive(false);
+        DialogueBox.GetComponentInChildren<Text>().text = " ";
+        //TextWhatDay.SetActive(false);
 
         for (int i = 0; i < ListThoughts.Count; i++)
         {
@@ -103,7 +134,7 @@ public class FirstThoughtsManager : MonoBehaviour
         //CalmDown
         //CalmDownText.SetActive(true);
         ListText[ListText.Count - 1].SetActive(false); //last text hidden
-        DialogueBox.GetComponentInChildren<Text>().text = "Shh... Calm down... Firstly just breathe and try to make these thoughts go away";
+        DialogueBox.GetComponentInChildren<Text>().text = "Shh... Calm down... Firstly just breathe and try to make these thoughts go away.";
 
         //Breathing sounds
 
@@ -116,6 +147,14 @@ public class FirstThoughtsManager : MonoBehaviour
 
         //Activate buttons
         ActivateButtons();
+
+        //Message
+        ScriptTABMechanic.ShowMessageIcon();
+        //add sound
+        TABMechanic.index = 6;
+
+        //Snap to the 4th message
+        ScriptTABMechanic.SnapTo(ScriptTABMechanic.ListMessages[2].GetComponent<RectTransform>());
 
         yield return null;
     }
@@ -183,7 +222,7 @@ public class FirstThoughtsManager : MonoBehaviour
             //InstructionsPanel.SetActive(false);
             //CalmDownText.SetActive(false);
 
-            DialogueBox.GetComponentInChildren<Text>().text = "Now I can find a solution";
+            DialogueBox.GetComponentInChildren<Text>().text = "Now I can find a solution.";
 
             //unlock camera
             InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";

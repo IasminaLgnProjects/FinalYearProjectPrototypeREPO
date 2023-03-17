@@ -30,6 +30,7 @@ public class KeepBetweenScenes : MonoBehaviour
             string nameOfTask = ListTaskName[sceneCounter]; //the name of the Thought Bubble should be the name of the Scene Loaded
             SceneManager.LoadScene(nameOfTask);
             sceneCounter++;
+            print(nameOfTask);
         }
     }
 }

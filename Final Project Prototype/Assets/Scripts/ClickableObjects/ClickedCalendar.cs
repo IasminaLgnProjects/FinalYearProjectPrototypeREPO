@@ -12,62 +12,25 @@ public class ClickedCalendar : MonoBehaviour
     //call Tab function
 
     [SerializeField] GameObject CalendarPanel;
-    [SerializeField] GameObject MessageIcon;
-    [SerializeField] GameObject TABPanel;
 
     [SerializeField] GameObject DialogueBox;
     [SerializeField] GameObject InstructionsPanel;
     [SerializeField] GameObject AnxietyMeterPanel;
 
-    bool tabOpened;
+
 
     [SerializeField] SecondThgTasksManager STMScript;
+    TABMechanic ScriptTABMechanic;
 
     // Start is called before the first frame update
     void Start()
     {
-        TABPanel.SetActive(false);
         CalendarPanel.SetActive(false);
-        MessageIcon.SetActive(false);
+        ScriptTABMechanic = GameObject.Find("TheGameManager").GetComponent<TABMechanic>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            //might want to put all into a single if
-            //OLD ONES
-            
-            /*
-            if (tabOpened)
-                tabOpened = false;
-            else
-                tabOpened = true;
-            */
 
-            //OpenTabPanel();
-            //PauseGame();
-
-
-            if (tabOpened)
-            {
-                
-                TABPanel.SetActive(true);
-                Time.timeScale = 0f; //pause game
-                print("freeze");
-                tabOpened = false;
-            }
-            else
-            {
-                
-                TABPanel.SetActive(false);
-                MessageIcon.SetActive(false);
-                Time.timeScale = 1f;
-                tabOpened = true;
-            }
-        }
-    }
 
     /*
     void OpenTabPanel()
@@ -101,17 +64,26 @@ public class ClickedCalendar : MonoBehaviour
     IEnumerator CalendarCoroutine()
     {
         print("clicked");
+        //Open Calendar UI
         InstructionsPanel.SetActive(false);
         CalendarPanel.SetActive(true);
         AnxietyMeterPanel.SetActive(false); //hide anxiety meter
 
         //Dialogue appears
-        DialogueBox.GetComponentInChildren<Text>().text = "Thankfully I made this calendar to help me keep track of the things I have to do";
+        DialogueBox.GetComponentInChildren<Text>().text = "Thankfully I made this calendar to help me keep track of the things I have to do.";
 
         //Wait
         yield return new WaitForSeconds(3);
 
-        MessageIcon.SetActive(true);
+        //Message
+        GameObject.Find("TheGameManager").GetComponent<TABMechanic>().ShowMessageIcon();
+        //add sound
+        TABMechanic.index = 9;
+
+        //Snap to message
+        ScriptTABMechanic.SnapTo(ScriptTABMechanic.ListMessages[4].GetComponent<RectTransform>());
+
+        //MessageIcon.SetActive(true); GET REFERENCE TO THE SCRIPT
         //In case the player will press tab beforehand (unlikely to happen) you can add a bool here that becomes true in this stage and above in Update you check if Tab was pressed -> if bool is true
 
         //sound

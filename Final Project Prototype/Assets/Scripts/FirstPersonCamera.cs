@@ -15,9 +15,20 @@ public class FirstPersonCamera : MonoBehaviour
     float inputX;
     float inputY;
 
+    [SerializeField] Transform point1;
+    [SerializeField] Transform point2;
+
     // Update is called once per frame
+
+    private void Start()
+    {
+        
+    }
+
     void Update()
-    {   
+    {
+        //transform.position = Vector3.Lerp(point1.position, point2.position, 5 * Time.deltaTime);
+
         //get input
         inputX = Input.GetAxis("Mouse X") * mouseSens;
         inputY = Input.GetAxis("Mouse Y") * mouseSens;

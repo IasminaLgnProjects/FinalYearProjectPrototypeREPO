@@ -117,5 +117,20 @@ public class TasksInOrder : MonoBehaviour
             print("k =" + k + "ListTasks.Count = " + ListTasks.Count);
             KeepBetweenScenes.ListTaskName[k] = ListTasks[k].GetComponentInChildren<Text>().text;
         }
+
+        if(GameObject.Find("TheGameManager").GetComponent<TABMechanic>().tabOpenedAtLeastOnce)
+        {
+            GameObject.Find("KeepBetweenScenes").GetComponent<KeepBetweenScenes>().LoadScene();
+        }
+        else
+        {
+            print("reminder");
+            GameObject.Find("SecondThgTasksManager").GetComponent<SecondThgTasksManager>().ReminderTAB();
+
+            //TEST
+            //TABMechanic.index = 4;
+
+        }
     }
+
 }

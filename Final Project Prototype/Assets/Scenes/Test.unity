@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16249200
 MonoBehaviour:
@@ -367,41 +367,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Test:
-  - question: GAD is characterised by which of the following symptoms?
+  - question: What does GAD stand for in this game?
     answers:
-    - A. Delusions
+    - A. Generalised Attention Deficit
+    - B. Generated Anxiety Disorder
+    - "C. Generalised Alzheimer\u2019s Disease"
+    - D. Generalised Anxiety Disorder
+    RightAnswer: 4
+  - question: Generalised anxiety disorder is characterised by which of the following
+      symptoms?
+    answers:
+    - A. Delusions (false beliefs held despite incontrovertible evidence)
     - 'B. Persistent excessive worry '
-    - 'C. Obsessions and compulsions '
-    - D. Auditory hallucinations
+    - C. Overwhelming sadness
+    - D. Auditory and/or visual hallucinations
     RightAnswer: 2
   - question: What is the minimum duration of symptoms required for a diagnosis?
     answers:
-    - A. 10 months
-    - B. 4 months
+    - A. 9 months
+    - B. 3 months
     - C. 6 months
     - D. 1 month
     RightAnswer: 3
-  - question: Which type of psychotherapy is usually effective in GAD?
+  - question: Which type of psychotherapy is usually effective in Generalised anxiety
+      disorder?
     answers:
     - A. Psychodynamic therapy
     - B. Dialectical behavior therapy
     - 'C. Cognitive-behavioral therapy '
     - D. Interpersonal psychotherapy
     RightAnswer: 3
-  - question: Question3
+  - question: Which one of the following is NOT a common physical symptom of generalised
+      anxiety disorder?
     answers:
-    - A
-    - B
-    - C
-    - D
-    RightAnswer: 4
-  - question: Question3
-    answers:
-    - A
-    - B
-    - C
-    - D
-    RightAnswer: 4
+    - A. Slower movement or speech
+    - B. Heart palpitations
+    - C. Fatigue
+    - D. Muscle tightness
+    RightAnswer: 1
   buttons:
   - {fileID: 2138684988}
   - {fileID: 496416554}
@@ -472,7 +475,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136955118
 MonoBehaviour:
@@ -849,7 +852,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &344170298
 MonoBehaviour:
@@ -1524,7 +1527,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785703901
 MonoBehaviour:
@@ -1765,7 +1768,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023315134
 MonoBehaviour:

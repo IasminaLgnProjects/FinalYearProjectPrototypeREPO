@@ -65,7 +65,7 @@ public class SecondThgTasksManager : MonoBehaviour
 
         //DialogueLine
         //DialogueText = "Oh! Today is Lisa's birthday";
-        DialogueBox.GetComponentInChildren<Text>().text = "Oh! Today is Lisa's birthday";
+        DialogueBox.GetComponentInChildren<Text>().text = "Oh! Today is Lisa's birthday.";
 
 
         //Wait
@@ -99,7 +99,7 @@ public class SecondThgTasksManager : MonoBehaviour
 
         //Calm down text 
 
-        DialogueBox.GetComponentInChildren<Text>().text = "Calm down... Just don't think too much about it";
+        DialogueBox.GetComponentInChildren<Text>().text = "Calm down... Just don't think too much about it.";
 
         //breathing sounds
 
@@ -154,7 +154,7 @@ public class SecondThgTasksManager : MonoBehaviour
         if(ListNoninteractiveButtons.Contains(buttonClicked))
         {
             DialogueBox.SetActive(true);
-            DialogueBox.GetComponentInChildren<Text>().text = "No! I can't just ignore these thoughts! What if I forget something?!... Something bad can happen... ";
+            DialogueBox.GetComponentInChildren<Text>().text = "No! I can't just ignore these thoughts! What if I forget something?!... Something bad can happen... I need to find a differen solution.";
             IncreaseAnxietyMeter();
             //IncreaseAnxietyMeter(); //twice
             //heard racing sounds
@@ -172,5 +172,10 @@ public class SecondThgTasksManager : MonoBehaviour
         AnxietyMeterPanel.SetActive(false);
         notepadCollider.enabled = true;
         InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
+    }
+
+    public void ReminderTAB()
+    {
+        DialogueBox.GetComponentInChildren<Text>().text = "I should really check my therapist's messages first.";
     }
 }

@@ -1,0 +1,82 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TABMechanic : MonoBehaviour
+{
+    [SerializeField] GameObject MessageIcon;
+    [SerializeField] GameObject TABPanel;
+    bool tabOpened = true;
+    public bool tabOpenedAtLeastOnce;
+
+    //ScrollView
+    [SerializeField] ScrollRect scrollRect;
+    [SerializeField] RectTransform contentPanel;
+
+    //List
+    public List<GameObject> ListMessages;
+    public static int index;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        TABPanel.SetActive(false);
+        MessageIcon.SetActive(false);
+
+        //test
+        //index = 6;
+        //SnapTo(ListMessages[2].GetComponent<RectTransform>());
+
+        foreach (GameObject message in ListMessages)
+            message.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            tabOpenedAtLeastOnce = true;
+            if (tabOpened)
+            {
+                
+                TABPanel.SetActive(true);
+                Time.timeScale = 0f; //pause game
+                print("freeze");
+                tabOpened = false;
+
+                for(int i = 0; i < index; i++)
+                {
+                    ListMessages[i].SetActive(true);
+                    print(index);
+                }
+
+            }
+            else
+            {
+
+                TABPanel.SetActive(false);
+                MessageIcon.SetActive(false);
+                Time.timeScale = 1f;
+                tabOpened = true;
+            }
+
+            //for
+        }
+    }
+
+    public void ShowMessageIcon()
+    {
+        MessageIcon.SetActive(true);
+        //play sound
+    }
+
+    public void SnapTo(RectTransform target)
+    {
+        Canvas.ForceUpdateCanvases();
+
+        contentPanel.anchoredPosition =
+                (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position)
+                - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
+    }
+}

@@ -40,7 +40,7 @@ public class ClickedToDoList : MonoBehaviour
         DialogueBox.GetComponentInChildren<Text>().text = "I know! I can just add them into a To Do List to be sure I don't forget any";
 
         InstructionsPanel.SetActive(true);
-        InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to add it in the list. Once in list click to remove it.*";
+        InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to add it in the list in your prefered order. Once in list click to remove it.*";
     }
 
     private void OnMouseOver()
