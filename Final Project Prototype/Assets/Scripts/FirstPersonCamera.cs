@@ -10,7 +10,7 @@ public class FirstPersonCamera : MonoBehaviour
     float cameraRotationHorz = 0f;
 
     //public float mouseSens = 2.5f;
-    public float mouseSens = 10f;
+    public float mouseSens = 5f;
 
     float inputX;
     float inputY;

@@ -27,17 +27,23 @@ public class ClickedToDoList : MonoBehaviour
 
     private void OnMouseDown()
     {
+        gameObject.GetComponent<Collider>().enabled = false;
         ToDoList();
         print("clicked list");
     }
 
     void ToDoList()
     {
-        AnxietyMeterPanel.SetActive(false);
-        NotWorkingButtons.SetActive(false);
         ToDoListPanel.SetActive(true);
 
-        DialogueBox.GetComponentInChildren<Text>().text = "I know! I can just add them into a To Do List to be sure I don't forget any";
+        //hide
+        AnxietyMeterPanel.SetActive(false);
+        NotWorkingButtons.SetActive(false);
+
+        //sound
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("RapidHeartbeat");
+
+        DialogueBox.GetComponentInChildren<Text>().text = "I know! I can just add them into a To Do List to be sure I don't forget anything.";
 
         InstructionsPanel.SetActive(true);
         InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to add it in the list in your prefered order. Once in list click to remove it.*";

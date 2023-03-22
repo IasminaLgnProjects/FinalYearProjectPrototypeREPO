@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class TestManager : MonoBehaviour
 {
@@ -59,8 +60,9 @@ public class TestManager : MonoBehaviour
         {
             buttons[i].transform.GetComponentInChildren<Text>().text = Test[currentQ].answers[i];
             buttons[i].GetComponent<CorrectAnswer>().isCorrect = false;
+            buttons[i].GetComponent<Image>().color = Color.white;
 
-            if( i + 1 == Test[currentQ].RightAnswer)
+            if ( i + 1 == Test[currentQ].RightAnswer)
             {
                 buttons[i].GetComponent<CorrectAnswer>().isCorrect = true;
             }
@@ -70,13 +72,17 @@ public class TestManager : MonoBehaviour
     public void CorrectAnswerSelected()
     {
         correctAnswersClicked++;
+        //gameObject.GetComponent<Button>().colors.pressedColor = Color.green;
+        //EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = Color.green;
 
         if (currentQ < Test.Count - 1)
             currentQ++;
         else
-            EndTest();
+            Invoke("EndTest", 1);
+            //EndTest();
 
-        WriteQuestion();
+        Invoke("WriteQuestion", 1);
+        //WriteQuestion();
     }
 
     public void WrongAnswerSelected()
@@ -84,9 +90,11 @@ public class TestManager : MonoBehaviour
         if (currentQ < Test.Count - 1)
             currentQ++;
         else
-            EndTest();
+            Invoke("EndTest", 1);
+            //EndTest();
 
-        WriteQuestion();
+        Invoke("WriteQuestion", 1);
+        //WriteQuestion();
     }
 
     void EndTest()

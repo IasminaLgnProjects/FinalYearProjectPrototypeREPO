@@ -59,13 +59,20 @@ public class TasksInOrder : MonoBehaviour
         //
         // 4. Increase counter to keep track of how many tasks are currently in the list
         //
+
         listCounter++;
 
         if(listCounter == ListTasks.Count)
             ReadyPanel.SetActive(true); 
         else
             ReadyPanel.SetActive(false);
-        }
+
+        //
+        // 5. Play Sound
+        //
+
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Write");
+    }
 
     public void DeleteTask()
     {
@@ -108,6 +115,12 @@ public class TasksInOrder : MonoBehaviour
         //
 
         ReadyPanel.SetActive(false);
+
+        //
+        // 6. Play Sound
+        //
+
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Erase");
     }
 
     public void SaveList()

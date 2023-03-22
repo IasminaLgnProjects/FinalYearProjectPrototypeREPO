@@ -3472,7 +3472,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242921246}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &242921252
 Camera:
   m_ObjectHideFlags: 0
@@ -4110,9 +4110,10 @@ GameObject:
   - component: {fileID: 293831376}
   - component: {fileID: 293831375}
   - component: {fileID: 293831374}
+  - component: {fileID: 293831379}
   m_Layer: 0
   m_Name: Calendar
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4212,6 +4213,22 @@ Transform:
   m_Father: {fileID: 469164344}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293831379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293831373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8173ede2cfef41141ab4142725dcd02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: a038b0370a5851542bbb5b0509d71b42, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
+  useDefault: 0
 --- !u!1 &306610988
 GameObject:
   m_ObjectHideFlags: 0
@@ -5022,6 +5039,117 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396766333}
   m_CullTransparentMesh: 1
+--- !u!1 &398726469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398726471}
+  - component: {fileID: 398726470}
+  m_Layer: 0
+  m_Name: TheAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &398726470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398726469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b723cf5aedfd243b46e85b30826d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListOfSounds:
+  - name: Ambience
+    clip: {fileID: 8300000, guid: 2ea0e95b4fc761840ac3bf19b41b68ff, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    soundSource: {fileID: 0}
+  - name: Pop
+    clip: {fileID: 8300000, guid: 4017afa229e053646adbe0e0e90a21ca, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Vibrate
+    clip: {fileID: 8300000, guid: c857412b71aae5045a06c7194454b3cf, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Breathing
+    clip: {fileID: 8300000, guid: 0bb93fe561cce224ba464c71d9f47da8, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 1
+    soundSource: {fileID: 0}
+  - name: Heartbeat30
+    clip: {fileID: 8300000, guid: 5415080d8eaafda47b57934ce59a972c, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Heartbeat20
+    clip: {fileID: 8300000, guid: 47adc3cd818b41d43986e3fc4480df31, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: RapidHeartbeat
+    clip: {fileID: 8300000, guid: 9d9c7481e3c065c41b6821e373e71bbc, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 1
+    soundSource: {fileID: 0}
+  - name: GetUp
+    clip: {fileID: 8300000, guid: b84601bc8d1ecbd4f8fdc8c7a926bb53, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 908f222ed33fd3144b9615f372554d3a, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Erase
+    clip: {fileID: 8300000, guid: aa6c174e51b9bb34697e9ec59c531b70, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Write
+    clip: {fileID: 8300000, guid: b94abdcd136aba74ca9edfcda75b0eb3, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+--- !u!4 &398726471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398726469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 947.96576, y: 129.11534, z: 0.009580702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &399618555
 GameObject:
   m_ObjectHideFlags: 0
@@ -7226,7 +7354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &615269465
 Transform:
   m_ObjectHideFlags: 0
@@ -10538,6 +10666,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 398726470}
+        m_TargetAssemblyTypeName: TheAudioManager, Assembly-CSharp
+        m_MethodName: SoundButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &860481674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10973,15 +11113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b06257830ed4a6448a6f0449a824043, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.89999974
+      value: 0.8999996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b06257830ed4a6448a6f0449a824043, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9000003
+      value: 0.9000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b06257830ed4a6448a6f0449a824043, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.411988
+      value: 2.4119885
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b06257830ed4a6448a6f0449a824043, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10989,7 +11129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b06257830ed4a6448a6f0449a824043, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7148845
+      value: 0.71488464
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b06257830ed4a6448a6f0449a824043, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11117,6 +11257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73b797a723eefd46a013051bde1f46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  REAL_SECONDS_PER_INGAME_DAY: 60
 --- !u!1 &896570028
 GameObject:
   m_ObjectHideFlags: 0
@@ -11153,8 +11294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.892517, y: -655}
-  m_SizeDelta: {x: 1243.2151, y: 66.7311}
+  m_AnchoredPosition: {x: -34, y: -670}
+  m_SizeDelta: {x: 1280, y: 104.6416}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896570030
 MonoBehaviour:
@@ -12452,8 +12593,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -14}
-  m_SizeDelta: {x: 1171.987, y: 69.916}
+  m_AnchoredPosition: {x: 12, y: -7}
+  m_SizeDelta: {x: 1250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083903565
 MonoBehaviour:
@@ -12488,7 +12629,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Remember that it is called Cognitive Behavioural Therapy (CBT).
+  m_Text: Remember that our talking therapy is called Cognitive Behavioural Therapy
+    (CBT).
 --- !u!222 &1083903566
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18160,7 +18302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: adfb61045abc9ad45acfec4b407a1f16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adfb61045abc9ad45acfec4b407a1f16, type: 3}
@@ -24546,9 +24688,10 @@ GameObject:
   - component: {fileID: 2114772271}
   - component: {fileID: 2114772273}
   - component: {fileID: 2114772272}
+  - component: {fileID: 2114772275}
   m_Layer: 0
   m_Name: NotebookCollider
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24599,6 +24742,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.005269637, y: 0.0018203272, z: 0.0066393325}
   m_Center: {x: 0.00043665088, y: 0.00082208106, z: -0.00020470629}
+--- !u!114 &2114772275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114772270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8173ede2cfef41141ab4142725dcd02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: a038b0370a5851542bbb5b0509d71b42, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
+  useDefault: 0
 --- !u!1 &2115552391
 GameObject:
   m_ObjectHideFlags: 0

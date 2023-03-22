@@ -75,6 +75,7 @@ public class SecondThgTasksManager : MonoBehaviour
         NotWorkingButtons.SetActive(true);
 
         //Hear racing sounds
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Heartbeat20");
 
         for (int i = 0; i < ListNoninteractiveButtons.Count; i++)
         {
@@ -102,6 +103,8 @@ public class SecondThgTasksManager : MonoBehaviour
         DialogueBox.GetComponentInChildren<Text>().text = "Calm down... Just don't think too much about it.";
 
         //breathing sounds
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Breathing");
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Heartbeat20");
 
         //Activate buttons
         ActivateButtons();
@@ -154,14 +157,19 @@ public class SecondThgTasksManager : MonoBehaviour
         if(ListNoninteractiveButtons.Contains(buttonClicked))
         {
             DialogueBox.SetActive(true);
-            DialogueBox.GetComponentInChildren<Text>().text = "No! I can't just ignore these thoughts! What if I forget something?!... Something bad can happen... I need to find a differen solution.";
+            DialogueBox.GetComponentInChildren<Text>().text = "No! I can't just ignore these thoughts! What if I forget something?!... Something bad can happen... I need to find a different solution.";
             IncreaseAnxietyMeter();
+
+            //Sound
+            GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Breathing");
+            GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("RapidHeartbeat");
+
             //IncreaseAnxietyMeter(); //twice
             //heard racing sounds
             //triedClicking = true;
             //Invoke("ToDoList", 7); //maybe increase
 
-            Invoke("LookForToDoList", 3); //maybe increase
+            Invoke("LookForToDoList", 6); //maybe increase
         }
     }
 
@@ -172,6 +180,8 @@ public class SecondThgTasksManager : MonoBehaviour
         AnxietyMeterPanel.SetActive(false);
         notepadCollider.enabled = true;
         InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
+        DialogueBox.GetComponentInChildren<Text>().text = "Remember what you've learned during the cognitive behavioural therapy... or how I like to call it “Can Be Treated”.";
+        
     }
 
     public void ReminderTAB()

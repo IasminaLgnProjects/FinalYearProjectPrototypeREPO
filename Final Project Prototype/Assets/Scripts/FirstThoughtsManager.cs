@@ -81,7 +81,7 @@ public class FirstThoughtsManager : MonoBehaviour
 
         //Message
         ScriptTABMechanic.ShowMessageIcon();
-        //add sound
+        ScriptTABMechanic.SoundNotification();
         TABMechanic.index = 4;
 
         DialogueBox.GetComponentInChildren<Text>().text = "Oh, she just sent me a message! I should check it.";
@@ -89,12 +89,13 @@ public class FirstThoughtsManager : MonoBehaviour
         //Animation
         yield return new WaitForSeconds(5);
         anim.SetBool("GetUp", true);
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("GetUp"); 
 
         //Wait for animation
         yield return new WaitForSeconds(10); //as much as it needs for the player to wake up
 
         //Lock Camera
-        CameraScript.mouseSens = 0f;
+        //CameraScript.mouseSens = 0f;
 
         //Show dialogue box
 
@@ -105,6 +106,10 @@ public class FirstThoughtsManager : MonoBehaviour
         DialogueBox.GetComponentInChildren<Text>().text = " ";
         //TextWhatDay.SetActive(false);
 
+        //Heartbeat sound
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Heartbeat30");
+
+        //Thoughts
         for (int i = 0; i < ListThoughts.Count; i++)
         {
             //ActivateText
@@ -136,7 +141,11 @@ public class FirstThoughtsManager : MonoBehaviour
         ListText[ListText.Count - 1].SetActive(false); //last text hidden
         DialogueBox.GetComponentInChildren<Text>().text = "Shh... Calm down... Firstly just breathe and try to make these thoughts go away.";
 
+        //Lock Camera
+        CameraScript.mouseSens = 0f;
+
         //Breathing sounds
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Breathing");
 
         //Wait
         yield return new WaitForSeconds(4); 
@@ -150,7 +159,7 @@ public class FirstThoughtsManager : MonoBehaviour
 
         //Message
         ScriptTABMechanic.ShowMessageIcon();
-        //add sound
+        ScriptTABMechanic.SoundNotification();
         TABMechanic.index = 6;
 
         //Snap to the 4th message
@@ -213,9 +222,12 @@ public class FirstThoughtsManager : MonoBehaviour
             nrClicksToReappear++; //First appear after 3 buttons clicked, then after 4, then after all 5 
         }
 
-        if (ListInactiveThoughts.Count == 5) //make this 5
+        if (ListInactiveThoughts.Count == 5)
         {
             print("DONE");
+
+            //Stop sound
+            GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Breathing");
 
             //deactivate all panels
             ThoughtsPanel.SetActive(false);

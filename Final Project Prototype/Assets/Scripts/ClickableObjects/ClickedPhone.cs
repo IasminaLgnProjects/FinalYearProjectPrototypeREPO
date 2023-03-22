@@ -49,8 +49,8 @@ public class ClickedPhone : MonoBehaviour
 
     private void OnMouseDown()
     {
-        StartCoroutine("MessageCoroutine");
         gameObject.GetComponent<Collider>().enabled = false;
+        StartCoroutine("MessageCoroutine");
     }
 
     IEnumerator MessageCoroutine()
@@ -116,6 +116,9 @@ public class ClickedPhone : MonoBehaviour
         DialogueBox.GetComponentInChildren<Text>().text = "I hate parties but she's my best friend!";
         AMScript.IncreaseAnxiety();
 
+        //Heartbeat sound
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Heartbeat30");
+
         yield return new WaitForSeconds(4);
 
         DialogueBox.GetComponentInChildren<Text>().text = "If I don't go she'll be sad...";
@@ -139,9 +142,16 @@ public class ClickedPhone : MonoBehaviour
         yield return new WaitForSeconds(4);
 
         DialogueBox.GetComponentInChildren<Text>().text = "I guess I have no choice...";
+
+        //Sound
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Sigh");
+
         Buttons[1].GetComponent<Button>().interactable = false;
         Buttons[0].GetComponent<Button>().interactable = true;
+        
         AMScript.ResetAnxietyMeter();
+
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Heartbeat30");
 
         yield return null;
     }
@@ -149,15 +159,21 @@ public class ClickedPhone : MonoBehaviour
     IEnumerator SecondButtonCoroutine()
     {
         //Dialogue
-        DialogueBox.GetComponentInChildren<Text>().text = "Just thinking about it makes me so anxious but I have to go...";
+        DialogueBox.GetComponentInChildren<Text>().text = "Just thinking about it also makes me so anxious but I have to go...";
 
-        yield return new WaitForSeconds(2);
+        //Sound
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("HeartbeatQuieter");
+
+        yield return new WaitForSeconds(4);
 
         //Increase Anxiety
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
             AMScript.IncreaseAnxiety();
 
         yield return new WaitForSeconds(4);
+
+        //Stop sound
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("HeartbeatQuieter");
 
         //ToDoList
         ListReference.ListAtTheEnd();

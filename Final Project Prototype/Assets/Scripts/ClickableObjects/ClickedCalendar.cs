@@ -77,7 +77,7 @@ public class ClickedCalendar : MonoBehaviour
 
         //Message
         GameObject.Find("TheGameManager").GetComponent<TABMechanic>().ShowMessageIcon();
-        //add sound
+        ScriptTABMechanic.SoundNotification();
         TABMechanic.index = 9;
 
         //Snap to message

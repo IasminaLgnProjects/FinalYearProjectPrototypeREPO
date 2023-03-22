@@ -79,4 +79,10 @@ public class TABMechanic : MonoBehaviour
                 (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position)
                 - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
     }
+
+    public void SoundNotification()
+    {
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Pop");
+        GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Vibrate");
+    }
 }
