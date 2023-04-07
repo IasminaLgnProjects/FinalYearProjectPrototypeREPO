@@ -29,10 +29,12 @@ public class ClickedPhone : MonoBehaviour
         ButtonsPanel.SetActive(false);
         Message1.SetActive(false);
         Message2.SetActive(false);
-        DialogueBox.SetActive(false); //might want to comment this
+        //DialogueBox.SetActive(false); //might want to comment this
 
         //Reference to the Anxiety Meter
         AMScript = GameObject.Find("StudySceneManager").GetComponent<AnxietyMeter>();
+
+        DialogueBox.GetComponentInChildren<Text>().text = "I have to message Lisa now.";
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class ClickedPhone : MonoBehaviour
         print("clicked");
         MessageLisaPanel.SetActive(true);
         AnxietyMeterPanel.SetActive(true);
+        DialogueBox.SetActive(false);
 
         yield return new WaitForSeconds(2);
 
@@ -171,6 +174,10 @@ public class ClickedPhone : MonoBehaviour
             AMScript.IncreaseAnxiety();
 
         yield return new WaitForSeconds(4);
+        DialogueBox.GetComponentInChildren<Text>().text = "In this kind of situations my anxiety will still go up no matter what I choose.";
+        
+
+        yield return new WaitForSeconds(8);
 
         //Stop sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("HeartbeatQuieter");

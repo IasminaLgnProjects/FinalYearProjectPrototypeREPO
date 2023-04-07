@@ -43,8 +43,8 @@ public class TheAudioManager : MonoBehaviour
             return;
         }
 
-        if (name == "Ambience")
-            s.volume = 0.1f;
+        //if (name == "Ambience")
+            //s.volume = 0.1f;
 
         s.soundSource.Play();
 

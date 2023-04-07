@@ -68,16 +68,19 @@ public class FirstThoughtsManager : MonoBehaviour
     IEnumerator All()
     {
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(8);
 
         //dialogue
         DialogueBox.SetActive(true);
         DialogueBox.GetComponentInChildren<Text>().text = "I can’t believe it’s been 9 months since I started my final year of uni and my part-time job… when my anxiety became so much worse...";
         
-        yield return new WaitForSeconds(6);
-        DialogueBox.GetComponentInChildren<Text>().text = "But I believe I have improved a lot in those 3 months of therapy with Ms Evans.";
+        yield return new WaitForSeconds(10);
+        DialogueBox.GetComponentInChildren<Text>().text = "But it took half a year of symptoms until I finally got my diagnosis.";        
+        
+        yield return new WaitForSeconds(10);
+        DialogueBox.GetComponentInChildren<Text>().text = "But I believe I have improved a lot in those 3 months of therapy with Ms. Evans.";
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10); //It was 5
 
         //Message
         ScriptTABMechanic.ShowMessageIcon();
@@ -87,7 +90,8 @@ public class FirstThoughtsManager : MonoBehaviour
         DialogueBox.GetComponentInChildren<Text>().text = "Oh, she just sent me a message! I should check it.";
 
         //Animation
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(8);
+        DialogueBox.GetComponentInChildren<Text>().text = "I have to get up.";
         anim.SetBool("GetUp", true);
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("GetUp"); 
 

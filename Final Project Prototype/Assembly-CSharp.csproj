@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\Scripts\KeepBetweenScenes.cs" />
     <Compile Include="Assets\Scripts\TheAudioManager.cs" />
+    <Compile Include="Assets\Scripts\ButtonMovementTest.cs" />
     <Compile Include="Assets\Scripts\TABMechanic.cs" />
     <Compile Include="Assets\3D Skybox\Common\Scripts\RandomRotator.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedLaptop.cs" />

@@ -20,6 +20,8 @@ public class TestManager : MonoBehaviour
     [SerializeField] GameObject CongratsPanel;
     [SerializeField] GameObject TestPanel;
     [SerializeField] GameObject EndPanel;
+    [SerializeField] GameObject RefPanel;
+
     //Score
     int correctAnswersClicked;
 
@@ -32,6 +34,7 @@ public class TestManager : MonoBehaviour
     {
         EndPanel.SetActive(false);
         TestPanel.SetActive(false);
+        RefPanel.SetActive(false);
         WriteQuestion();
     }
 
@@ -118,5 +121,15 @@ public class TestManager : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("FirstPanelScene");
+    }
+
+    public void OpenReferences()
+    {
+        RefPanel.SetActive(true);
+    }
+
+    public void CloseReferences()
+    {
+        RefPanel.SetActive(false);
     }
 }

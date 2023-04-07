@@ -25,7 +25,7 @@ public class ClickedBook : MonoBehaviour
         ClockObject.SetActive(false);
         BlurBook.SetActive(false);
         //DialogueBox.SetActive(false);
-        DialogueBox.GetComponentInChildren<Text>().text = "I have to start studying now.";
+        DialogueBox.GetComponentInChildren<Text>().text = "I have to start studying now, I have a lot to read.";
 
         //Tab
         ScriptTABMechanic = GameObject.Find("StudySceneManager").GetComponent<TABMechanic>();

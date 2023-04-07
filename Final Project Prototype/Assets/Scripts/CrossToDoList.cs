@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CrossToDoList : MonoBehaviour
 {
     [SerializeField] GameObject ToDoListPanel;
+    [SerializeField] GameObject ControlsPanel;
     [SerializeField] List<Text> TasksInList;
     [SerializeField] List<Image> CrossLines;
     // Start is called before the first frame update
@@ -40,6 +41,13 @@ public class CrossToDoList : MonoBehaviour
         foreach (Image line in CrossLines)
             line.enabled = false;
 
+        Invoke("CloseControls", 10f);
+
+    }
+
+    public void CloseControls()
+    {
+        ControlsPanel.SetActive(false);
     }
 
     public void CloseList()

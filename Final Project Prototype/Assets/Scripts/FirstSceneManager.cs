@@ -11,6 +11,8 @@ public class FirstSceneManager : MonoBehaviour
     [SerializeField] GameObject SupportPanel;
     [SerializeField] GameObject PlayButton;
     [SerializeField] GameObject NextButton;
+    [SerializeField] GameObject DisclaimerPanel;
+    [SerializeField] GameObject SecondNextButton;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,10 @@ public class FirstSceneManager : MonoBehaviour
         SupportPanel.SetActive(false);
         PlayButton.SetActive(false);
         NextButton.SetActive(false);
-        Invoke("ShowNextButton", 5);
+        StoryPanel.SetActive(false);
+        SecondNextButton.SetActive(false);
+        //DisclaimerPanel is active
+        Invoke("ShowNextButton", 5); //wait 5 seconds then activate the button
     }
 
     // Update is called once per frame
@@ -34,8 +39,22 @@ public class FirstSceneManager : MonoBehaviour
 
     public void ActivateSupportPanel()
     {
+        DisclaimerPanel.SetActive(false);
         NextButton.SetActive(false);
         SupportPanel.SetActive(true);
+        Invoke("ShowSecondNextButton", 5);
+    }
+
+    void ShowSecondNextButton()
+    {
+        SecondNextButton.SetActive(true);
+    }
+
+    public void ActivateStoryPanel()
+    {
+        SupportPanel.SetActive(false);
+        SecondNextButton.SetActive(false);
+        StoryPanel.SetActive(true);
         Invoke("ShowPlayButton", 5);
     }
 
