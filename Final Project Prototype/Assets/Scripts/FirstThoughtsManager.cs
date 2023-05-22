@@ -17,6 +17,7 @@ public class FirstThoughtsManager : MonoBehaviour
     [SerializeField] GameObject ThoughtsPanel;
     [SerializeField] GameObject InstructionsPanel;
     //[SerializeField] GameObject CalmDownText;
+    [SerializeField] GameObject MouseInstPanel;
 
     //UI Text
     [SerializeField] GameObject DialogueBox;
@@ -69,6 +70,7 @@ public class FirstThoughtsManager : MonoBehaviour
     {
         
         yield return new WaitForSeconds(8);
+        MouseInstPanel.SetActive(false);
 
         //dialogue
         DialogueBox.SetActive(true);
@@ -157,6 +159,7 @@ public class FirstThoughtsManager : MonoBehaviour
         //Instructions 
         InstructionsPanel.SetActive(true);
         InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to make it disappear*";
+        DialogueBox.GetComponentInChildren<Text>().text = "I know there is a solution, I just have to remember.";
 
         //Activate buttons
         ActivateButtons();

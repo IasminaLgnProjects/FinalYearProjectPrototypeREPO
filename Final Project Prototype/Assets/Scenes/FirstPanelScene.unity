@@ -2392,7 +2392,7 @@ MonoBehaviour:
   ListOfSounds:
   - name: Click
     clip: {fileID: 8300000, guid: 908f222ed33fd3144b9615f372554d3a, type: 3}
-    volume: 0.5
+    volume: 0.2
     pitch: 1
     loop: 0
     soundSource: {fileID: 0}

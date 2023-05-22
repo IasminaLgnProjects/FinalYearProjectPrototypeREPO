@@ -17,6 +17,10 @@ public class FirstSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //resolution
+        Screen.SetResolution(1920, 1080, true);
+
+        //UI
         SupportPanel.SetActive(false);
         PlayButton.SetActive(false);
         NextButton.SetActive(false);

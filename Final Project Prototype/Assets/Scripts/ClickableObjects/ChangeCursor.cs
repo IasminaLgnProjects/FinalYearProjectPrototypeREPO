@@ -12,9 +12,17 @@ public class ChangeCursor : MonoBehaviour
 
     bool alreadyChanged;
 
+    private void Start()
+    {
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.Locked;
+        
+    }
 
     private void Update()
     {
+
+        //print(Cursor.visible);
         SetCursor();
 
         if (useDefault)
@@ -66,4 +74,5 @@ public class ChangeCursor : MonoBehaviour
         useDefault = false;
     }
     */
+
 }

@@ -32,6 +32,10 @@ public class TestManager : MonoBehaviour
 
     void Start()
     {
+        //resolution
+        Screen.SetResolution(1920, 1080, true);
+
+        //UI
         EndPanel.SetActive(false);
         TestPanel.SetActive(false);
         RefPanel.SetActive(false);

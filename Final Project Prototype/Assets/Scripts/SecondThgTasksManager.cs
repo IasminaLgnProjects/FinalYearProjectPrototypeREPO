@@ -179,7 +179,8 @@ public class SecondThgTasksManager : MonoBehaviour
         NotWorkingButtons.SetActive(false);
         AnxietyMeterPanel.SetActive(false);
         notepadCollider.enabled = true;
-        InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
+        InstructionsPanel.SetActive(true);
+        InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution and click on it*";
         DialogueBox.GetComponentInChildren<Text>().text = "Remember what you've learned during the cognitive behavioural therapy... or how I like to call it “Can Be Treated”.";
         
     }

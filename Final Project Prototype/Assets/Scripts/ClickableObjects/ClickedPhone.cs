@@ -94,6 +94,7 @@ public class ClickedPhone : MonoBehaviour
     public void SecondButtonClicked()
     {
         Buttons[0].GetComponent<Button>().interactable = false;
+        Buttons[1].GetComponent<Button>().interactable = false;
         StartCoroutine("SecondButtonCoroutine");
     }
 
