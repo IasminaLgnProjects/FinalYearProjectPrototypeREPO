@@ -74,6 +74,9 @@ public class ClickedBook : MonoBehaviour
         ClockObject.SetActive(true);
         DialogueBox.SetActive(false);
 
+        //Unlock Mouse
+        gameObject.GetComponent<ChangeCrsForScenes>().unlockedCursor = true;
+
         //Page sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Page");
 

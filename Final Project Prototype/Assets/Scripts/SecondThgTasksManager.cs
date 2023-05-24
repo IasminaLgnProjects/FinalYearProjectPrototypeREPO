@@ -32,6 +32,9 @@ public class SecondThgTasksManager : MonoBehaviour
     //ToDoList
     [SerializeField] Collider notepadCollider;
 
+    //MouseLock reference
+    MouseLock MouseLockScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,7 @@ public class SecondThgTasksManager : MonoBehaviour
         //TGMScript = GameObject.Find("TheGameManager").GetComponent<TheGameManager>();
         TGMObject = GameObject.Find("TheGameManager");
         DialogueText = DialogueBox.GetComponentInChildren<Text>().text;
+        MouseLockScript = GameObject.Find("TheGameManager").GetComponent<MouseLock>();
 
         foreach (GameObject thought in ListNoninteractiveButtons)
         {
@@ -67,6 +71,8 @@ public class SecondThgTasksManager : MonoBehaviour
         //DialogueText = "Oh! Today is Lisa's birthday";
         DialogueBox.GetComponentInChildren<Text>().text = "Oh! Today is Lisa's birthday.";
 
+        //Unlock Mouse
+        MouseLockScript.UnlockMouseFunction();
 
         //Wait
         yield return new WaitForSeconds(2);
@@ -175,14 +181,21 @@ public class SecondThgTasksManager : MonoBehaviour
 
     void LookForToDoList()
     {
+        //UI
         CalendarPanel.SetActive(false);
         NotWorkingButtons.SetActive(false);
         AnxietyMeterPanel.SetActive(false);
+
+        //Collider
         notepadCollider.enabled = true;
+
+        //Instructions
         InstructionsPanel.SetActive(true);
         InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution and click on it*";
         DialogueBox.GetComponentInChildren<Text>().text = "Remember what you've learned during the cognitive behavioural therapy... or how I like to call it “Can Be Treated”.";
-        
+
+        //Lock mouse
+        MouseLockScript.LockMouseFunction();
     }
 
     public void ReminderTAB()

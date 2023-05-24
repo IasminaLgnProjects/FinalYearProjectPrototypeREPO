@@ -18,6 +18,8 @@ public class FirstPersonCamera : MonoBehaviour
     [SerializeField] Transform point1;
     [SerializeField] Transform point2;
 
+    public int horizClamp = 95;
+
     // Update is called once per frame
 
     private void Start()
@@ -41,7 +43,7 @@ public class FirstPersonCamera : MonoBehaviour
             cameraRotationVert = Mathf.Clamp(cameraRotationVert, -90, 90);
      
             cameraRotationHorz += inputX;
-            cameraRotationHorz = Mathf.Clamp(cameraRotationHorz, -95, 95);
+            cameraRotationHorz = Mathf.Clamp(cameraRotationHorz, -95, horizClamp); //it was 95 before mouse lock
 
             transform.localEulerAngles = Vector3.right * cameraRotationVert + Vector3.up * cameraRotationHorz;
         }

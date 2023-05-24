@@ -56,14 +56,16 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ClickableObjects\TestMouseLock.cs" />
+    <Compile Include="Assets\Scripts\ClickableObjects\MouseLock.cs" />
     <Compile Include="Assets\Scripts\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\Test\QuestionsAndAnswers.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedBook.cs" />
     <Compile Include="Assets\Scripts\AnxietyMeter.cs" />
     <Compile Include="Assets\Scripts\CrossToDoList.cs" />
+    <Compile Include="Assets\Scripts\ClickableObjects\ChangeCrsForScenes.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedCalendar.cs" />
     <Compile Include="Assets\Scripts\TasksReferences.cs" />
+    <Compile Include="Assets\Scripts\ClickableObjects\OLDChangeCrsForScenes.cs" />
     <Compile Include="Assets\Scripts\Test\TestManager.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedToDoList.cs" />
     <Compile Include="Assets\Scripts\TheGameManager.cs" />

@@ -13,6 +13,9 @@ public class ClickedToDoList : MonoBehaviour
     [SerializeField] GameObject InstructionsPanel;
     [SerializeField] GameObject AnxietyMeterPanel;
 
+    [SerializeField] GameObject CursorDef;
+    bool hideCursor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,19 +25,25 @@ public class ClickedToDoList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(hideCursor) CursorDef.SetActive(false);
     }
 
     private void OnMouseDown()
     {
         gameObject.GetComponent<Collider>().enabled = false;
         ToDoList();
-        print("clicked list");
+        //print("clicked list");
     }
 
     void ToDoList()
     {
         ToDoListPanel.SetActive(true);
+
+        //UnlockCursor
+        GameObject.Find("TheGameManager").GetComponent<MouseLock>().UnlockMouseFunction();
+        //if (GameObject.Find("CursorIcon").activeInHierarchy) GameObject.Find("CursorIcon").SetActive(false);
+        //CursorDef.SetActive(false);
+        hideCursor = true;
 
         //hide
         AnxietyMeterPanel.SetActive(false);
@@ -47,10 +56,5 @@ public class ClickedToDoList : MonoBehaviour
 
         InstructionsPanel.SetActive(true);
         InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to add it to the list. Once in list, you can click again to remove it and rearrange the tasks in your preferred order*";
-    }
-
-    private void OnMouseOver()
-    {
-        print("over");
     }
 }

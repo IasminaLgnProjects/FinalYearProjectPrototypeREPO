@@ -36,10 +36,14 @@ public class FirstThoughtsManager : MonoBehaviour
     //animator
     [SerializeField] Animator anim;
 
+    //MouseLock reference
+    MouseLock MouseLockScript;
+
     void Start()
     {
         TGMScript = GameObject.Find("TheGameManager").GetComponent<TheGameManager>();
         ScriptTABMechanic = GameObject.Find("TheGameManager").GetComponent<TABMechanic>();
+        MouseLockScript = GameObject.Find("TheGameManager").GetComponent<MouseLock>();
 
         //hide all text
         foreach (GameObject text in ListText)
@@ -63,12 +67,11 @@ public class FirstThoughtsManager : MonoBehaviour
 
         Calendar.GetComponent<Collider>().enabled = false;
 
-        StartCoroutine("All");
+        StartCoroutine("All"); 
     }
 
     IEnumerator All()
     {
-        
         yield return new WaitForSeconds(8);
         MouseInstPanel.SetActive(false);
 
@@ -99,6 +102,9 @@ public class FirstThoughtsManager : MonoBehaviour
 
         //Wait for animation
         yield return new WaitForSeconds(10); //as much as it needs for the player to wake up
+
+        //Increase the camera clamp so they can reach the notebook
+        GameObject.Find("FirstPersonCamera").GetComponent<FirstPersonCamera>().horizClamp = 115;
 
         //Lock Camera
         //CameraScript.mouseSens = 0f;
@@ -150,6 +156,9 @@ public class FirstThoughtsManager : MonoBehaviour
         //Lock Camera
         CameraScript.mouseSens = 0f;
 
+        //Unlock Mouse
+        MouseLockScript.UnlockMouseFunction();
+
         //Breathing sounds
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Breathing");
 
@@ -163,6 +172,8 @@ public class FirstThoughtsManager : MonoBehaviour
 
         //Activate buttons
         ActivateButtons();
+        
+        //Or maybe unlock mouse here
 
         //Message
         ScriptTABMechanic.ShowMessageIcon();
@@ -243,13 +254,17 @@ public class FirstThoughtsManager : MonoBehaviour
 
             DialogueBox.GetComponentInChildren<Text>().text = "Now I can find a solution.";
 
-            //unlock camera
+            //Instructions
             InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
 
             //Unlock camera
             CameraScript.mouseSens = 2.5f;
 
+            //Activate the calendar's collider
             Calendar.GetComponent<Collider>().enabled = true;
+
+            //Lock mouse
+            MouseLockScript.LockMouseFunction();
         }
     }
 }

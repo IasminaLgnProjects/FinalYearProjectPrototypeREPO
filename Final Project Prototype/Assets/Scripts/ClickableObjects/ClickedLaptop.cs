@@ -8,6 +8,9 @@ public class ClickedLaptop : MonoBehaviour
     [SerializeField] GameObject ClockObject;
     [SerializeField] GameObject DialogueBox;
 
+    [SerializeField] GameObject CursorDef;
+    bool hideCursor;
+
     void Start()
     {
         ClockObject.SetActive(false);
@@ -17,7 +20,7 @@ public class ClickedLaptop : MonoBehaviour
 
     void Update()
     {
-
+        if (hideCursor) CursorDef.SetActive(false);
     }
 
     private void OnMouseDown()
@@ -47,6 +50,10 @@ public class ClickedLaptop : MonoBehaviour
         ClockObject.SetActive(true);
         ClockObject.GetComponent<Clock>().REAL_SECONDS_PER_INGAME_DAY = 240f; //slow down the normal clock
         DialogueBox.SetActive(false);
+
+        //Unlock Mouse
+        gameObject.GetComponent<ChangeCrsForScenes>().unlockedCursor = true;
+        hideCursor = true;
 
         //Typing sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Typing");

@@ -22,11 +22,15 @@ public class ClickedCalendar : MonoBehaviour
     [SerializeField] SecondThgTasksManager STMScript;
     TABMechanic ScriptTABMechanic;
 
+    //MouseLock reference
+    //MouseLock MouseLockScript;
+
     // Start is called before the first frame update
     void Start()
     {
         CalendarPanel.SetActive(false);
         ScriptTABMechanic = GameObject.Find("TheGameManager").GetComponent<TABMechanic>();
+        //MouseLockScript = GameObject.Find("TheGameManager").GetComponent<MouseLock>();
     }
 
     // Update is called once per frame
@@ -49,11 +53,26 @@ public class ClickedCalendar : MonoBehaviour
             Time.timeScale = 1f;
     }*/
 
-
+    /*
     private void OnMouseOver()
     {
         print("overCalendar");
+        MouseLockScript.ChangeCursorFunction();
     }
+    */
+
+
+    /*
+    private void OnMouseEnter()
+    {
+        print("overCalendar");
+        MouseLockScript.ChangeCursorFunction();
+    }
+
+    private void OnMouseExit()
+    {
+        MouseLockScript.ChangeCursorFunction();
+    }*/
 
     private void OnMouseDown()
     {
@@ -68,6 +87,9 @@ public class ClickedCalendar : MonoBehaviour
         InstructionsPanel.SetActive(false);
         CalendarPanel.SetActive(true);
         AnxietyMeterPanel.SetActive(false); //hide anxiety meter
+
+        //Mouse
+        //GameObject.Find("TheGameManager").GetComponent<MouseLock>().UnlockMouseFunction();
 
         //Dialogue appears
         DialogueBox.GetComponentInChildren<Text>().text = "Thankfully I made this calendar to help me keep track of the things I have to do.";

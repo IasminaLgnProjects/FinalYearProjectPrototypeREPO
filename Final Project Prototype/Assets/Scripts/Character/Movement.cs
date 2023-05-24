@@ -85,14 +85,14 @@ public class Movement : MonoBehaviour
             
             GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Footstep");
             playingSound = true;
-            print("moving");
+            //print("moving");
         }
 
 
         if(horzAxis == 0 && vertAxis == 0)
         {
             playingSound = false;
-            print("stopped");
+            //print("stopped");
             GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Footstep");
         }
 

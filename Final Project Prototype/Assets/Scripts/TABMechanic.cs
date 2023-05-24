@@ -18,6 +18,8 @@ public class TABMechanic : MonoBehaviour
     public List<GameObject> ListMessages;
     public static int index;
 
+    bool stopLockingMouse;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,9 @@ public class TABMechanic : MonoBehaviour
                     print(index);
                 }
 
+                //Unlock Mouse
+                gameObject.GetComponent<MouseLock>().UnlockMouseFunction();
+                stopLockingMouse = false;
             }
             else
             {
@@ -59,9 +64,18 @@ public class TABMechanic : MonoBehaviour
                 MessageIcon.SetActive(false);
                 Time.timeScale = 1f;
                 tabOpened = true;
-            }
 
-            //for
+                //Lock Mouse
+
+                /*
+                if(!stopLockingMouse) //without this if you can't unlock the mouse later on because it is in Update
+                {
+                    print("locking");
+                    gameObject.GetComponent<MouseLock>().LockMouseFunction();
+                    stopLockingMouse = true;
+                }
+                */
+            }
         }
     }
 

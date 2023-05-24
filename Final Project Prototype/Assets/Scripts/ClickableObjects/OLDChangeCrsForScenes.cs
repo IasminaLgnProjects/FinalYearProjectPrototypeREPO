@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeCursor : MonoBehaviour
+public class OLDChangeCrsForScenes : MonoBehaviour
 {
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
@@ -10,40 +10,43 @@ public class ChangeCursor : MonoBehaviour
 
     public bool useDefault;
 
-    bool alreadyChanged;
+    public bool alreadyChanged; //make private
 
     //MouseLock reference
     MouseLock MouseLockScript;
+
+    //Layer
+    public LayerMask clickableLayer;
 
     private void Start()
     {
         //Cursor.visible = true;
         //Cursor.lockState = CursorLockMode.Locked;
         MouseLockScript = GameObject.Find("TheGameManager").GetComponent<MouseLock>();
+        useDefault = true;
     }
 
-    /*
+    
     private void Update()
     {
-
         //print(Cursor.visible);
         SetCursor();
 
         if (useDefault)
         {
             alreadyChanged = false;
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-            
-
+            //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            MouseLockScript.ChangeToDefaultCursor();
+            //print("default");
         }
-            
-        if(!useDefault && !alreadyChanged)
+        //else    
+        else if(!useDefault && !alreadyChanged)
         {
             //Cursor.SetCursor(cursorTexture, Vector2.zero, cursorMode);
             alreadyChanged = true;
-            Cursor.SetCursor(cursorTexture, new Vector2(160, 160), cursorMode);
-            
-            print("changed");
+            //Cursor.SetCursor(cursorTexture, new Vector2(160, 160), cursorMode);
+            MouseLockScript.ChangeToIntCursor();
+            //print("changed");
         }    
     }
 
@@ -52,17 +55,20 @@ public class ChangeCursor : MonoBehaviour
     {
         //Raycast
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1.5f))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1.5f, clickableLayer))
         {
+            useDefault = false;
             //print(hit.collider.gameObject.name);
-            if (hit.collider.gameObject.tag == "Clickable")
-                useDefault = false;
-            else
-                useDefault = true;
         }
+        else
+        {
+            //print("nothing");
+            useDefault = true;
+        }
+            
     }
 
-    */
+    /*
     private void OnMouseEnter()
     {
         print("enterCalendar");

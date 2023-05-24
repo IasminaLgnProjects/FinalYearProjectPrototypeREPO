@@ -58,10 +58,15 @@ public class ClickedPhone : MonoBehaviour
     IEnumerator MessageCoroutine()
     {
         print("clicked");
+        //UI
         MessageLisaPanel.SetActive(true);
         AnxietyMeterPanel.SetActive(true);
         DialogueBox.SetActive(false);
 
+        //Unlock Mouse
+        gameObject.GetComponent<ChangeCrsForScenes>().unlockedCursor = true;
+
+        //Activate messages
         yield return new WaitForSeconds(2);
 
         Message1.SetActive(true);
