@@ -6,34 +6,11 @@ public class MouseLock : MonoBehaviour
 {
     [SerializeField] GameObject DefaultCursor;
     [SerializeField] GameObject IntCursor;
-    // Start is called before the first frame update
+
     void Start()
     {
         LockMouseFunction();
-        //IntCursor.SetActive(false);
-        //Cursor.lockState = CursorLockMode.Locked;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    /*
-    private void OnMouseOver()
-    {
-        print("over");
-        IntCursor.SetActive(true);
-        DefaultCursor.SetActive(false);
-    }
-
-    private void OnMouseExit()
-    {
-        IntCursor.SetActive(false);
-        DefaultCursor.SetActive(true);
-    }
-    */
 
     public void LockMouseFunction()
     {
@@ -51,7 +28,7 @@ public class MouseLock : MonoBehaviour
 
     public void ChangeCursorFunction()
     {
-        print("changing cursor");
+        //print("changing cursor");
         if(DefaultCursor.activeInHierarchy == true)
         {
             IntCursor.SetActive(true);
@@ -62,19 +39,18 @@ public class MouseLock : MonoBehaviour
             DefaultCursor.SetActive(true);
             IntCursor.SetActive(false);
         }
-            
     }
 
     public void ChangeToDefaultCursor()
     {
-        print("changing to default cursor");
+        //print("changing to default cursor");
             DefaultCursor.SetActive(true);
             IntCursor.SetActive(false);
     }
 
     public void ChangeToIntCursor()
     {
-        print("changing to int cursor");
+        //print("changing to int cursor");
             IntCursor.SetActive(true);
             DefaultCursor.SetActive(false);
     }

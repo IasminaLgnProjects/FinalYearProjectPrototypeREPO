@@ -20,7 +20,6 @@ public class ClickedPhone : MonoBehaviour
     [SerializeField] AnxietyMeter AMScript;
     [SerializeField] CrossToDoList ListReference;
 
-    // Start is called before the first frame update
     void Start()
     {
         //UI diactivate panels
@@ -29,24 +28,11 @@ public class ClickedPhone : MonoBehaviour
         ButtonsPanel.SetActive(false);
         Message1.SetActive(false);
         Message2.SetActive(false);
-        //DialogueBox.SetActive(false); //might want to comment this
 
         //Reference to the Anxiety Meter
         AMScript = GameObject.Find("StudySceneManager").GetComponent<AnxietyMeter>();
 
         DialogueBox.GetComponentInChildren<Text>().text = "I have to message Lisa now.";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-    private void OnMouseOver()
-    {
-        print("overPhone");
     }
 
     private void OnMouseDown()
@@ -57,7 +43,6 @@ public class ClickedPhone : MonoBehaviour
 
     IEnumerator MessageCoroutine()
     {
-        print("clicked");
         //UI
         MessageLisaPanel.SetActive(true);
         AnxietyMeterPanel.SetActive(true);
@@ -83,6 +68,7 @@ public class ClickedPhone : MonoBehaviour
 
         yield return new WaitForSeconds(6);
 
+        //Buttons are interactable
         ButtonsPanel.SetActive(true);
         AnxietyMeterPanel.SetActive(true);
 
@@ -111,15 +97,7 @@ public class ClickedPhone : MonoBehaviour
         }
     }
 
-    /*
-    void MakeButtonsInteractable()
-    {
-        foreach (GameObject button in Buttons)
-        {
-            button.GetComponent<Button>().interactable = true;
-        }
-    }*/
-
+    //"Wrong" option
     IEnumerator ThirdButtonCoroutine()
     {
         DialogueBox.GetComponentInChildren<Text>().text = "I hate parties but she's my best friend!";
@@ -130,6 +108,7 @@ public class ClickedPhone : MonoBehaviour
 
         yield return new WaitForSeconds(4);
 
+        //Dialogue
         DialogueBox.GetComponentInChildren<Text>().text = "If I don't go she'll be sad...";
         AMScript.IncreaseAnxiety();
 
@@ -152,12 +131,14 @@ public class ClickedPhone : MonoBehaviour
 
         DialogueBox.GetComponentInChildren<Text>().text = "I guess I have no choice...";
 
-        //Sound
+        //Sigh sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Sigh");
 
+        //Diactivate the other button
         Buttons[1].GetComponent<Button>().interactable = false;
         Buttons[0].GetComponent<Button>().interactable = true;
         
+        //Reset
         AMScript.ResetAnxietyMeter();
 
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Heartbeat30");
@@ -165,6 +146,7 @@ public class ClickedPhone : MonoBehaviour
         yield return null;
     }
 
+    //"Correct" option
     IEnumerator SecondButtonCoroutine()
     {
         //Dialogue
@@ -182,7 +164,6 @@ public class ClickedPhone : MonoBehaviour
         yield return new WaitForSeconds(4);
         DialogueBox.GetComponentInChildren<Text>().text = "In this kind of situations my anxiety will still go up no matter what I choose.";
         
-
         yield return new WaitForSeconds(8);
 
         //Stop sound

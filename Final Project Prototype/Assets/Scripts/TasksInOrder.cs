@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class TasksInOrder : MonoBehaviour
+public class TasksInOrder : MonoBehaviour //Add / Delete tasks from ToDoList
 {
     [SerializeField] List<GameObject> ListTasks;
     [SerializeField] int listCounter;
-    [SerializeField] int clickedTaskCounter;
+    [SerializeField] int clickedTaskCounter; 
     [SerializeField] int numberOfClickedTasks;
-    TaskForList TaskScript;
     string nameOfTask;
 
     [SerializeField] GameObject ReadyPanel;
@@ -24,11 +23,6 @@ public class TasksInOrder : MonoBehaviour
         }
 
         ReadyPanel.SetActive(false);
-    }
-
-    void Update()
-    {
-
     }
 
     public void AddTaskToList()
@@ -45,7 +39,7 @@ public class TasksInOrder : MonoBehaviour
          //
 
         numberOfClickedTasks++;
-        ListTasks[listCounter].GetComponent<TaskForList>().counter = numberOfClickedTasks;
+        ListTasks[listCounter].GetComponent<TaskForList>().counter = numberOfClickedTasks; //the click number is that button's unique "counter" - each has a different instance of the "TaskForList" script
         //print("numberOfClickedTasks" + numberOfClickedTasks);
 
         //
@@ -127,7 +121,7 @@ public class TasksInOrder : MonoBehaviour
     {
         for (int k = 0; k < ListTasks.Count; k++)
         {
-            print("k =" + k + "ListTasks.Count = " + ListTasks.Count);
+            //print("k =" + k + "ListTasks.Count = " + ListTasks.Count);
             KeepBetweenScenes.ListTaskName[k] = ListTasks[k].GetComponentInChildren<Text>().text;
         }
 
@@ -139,10 +133,6 @@ public class TasksInOrder : MonoBehaviour
         {
             print("reminder");
             GameObject.Find("SecondThgTasksManager").GetComponent<SecondThgTasksManager>().ReminderTAB();
-
-            //TEST
-            //TABMechanic.index = 4;
-
         }
     }
 

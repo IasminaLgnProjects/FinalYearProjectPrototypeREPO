@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeCrsForScenes : MonoBehaviour
+public class ChangeCrsForScenes : MonoBehaviour //new method using raycast
 {
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
@@ -22,8 +22,6 @@ public class ChangeCrsForScenes : MonoBehaviour
 
     private void Start()
     {
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.Locked;
         MouseLockScript = GameObject.Find("TheGameManager").GetComponent<MouseLock>();
         useDefault = true;
     }
@@ -40,10 +38,7 @@ public class ChangeCrsForScenes : MonoBehaviour
         }
         else
         {
-            //print("nothing");
             //useDefault = true;
-
-
             if(!unlockedCursor)
             {
                 MouseLockScript.ChangeToDefaultCursor();
@@ -54,12 +49,7 @@ public class ChangeCrsForScenes : MonoBehaviour
             }
         }
 
-
-
-
-
-
-        /*
+        /* Tried different method
         SetCursor();
 
         if (useDefault)
@@ -76,10 +66,8 @@ public class ChangeCrsForScenes : MonoBehaviour
         }*/
     }
 
-
     void SetCursor()
     {
-        //Raycast
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1.5f, clickableLayer))
         {
@@ -88,31 +76,8 @@ public class ChangeCrsForScenes : MonoBehaviour
         }
         else
         {
-            //print("nothing");
             useDefault = true;
         }
 
     }
-
-    /*
-    private void OnMouseEnter()
-    {
-        print("enterCalendar");
-        MouseLockScript.ChangeCursorFunction();
-    }
-
-    private void OnMouseExit()
-    {
-        print("exit");
-        MouseLockScript.ChangeCursorFunction();
-    }
-
-    /*
-    private void OnMouseOver()
-    {
-    print("overCalendar");
-                MouseLockScript.ChangeCursorFunction();
-    }
-    */
-
 }

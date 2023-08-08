@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 public class FirstThoughtsManager : MonoBehaviour
 {
-    //Make then private and turn them back to 2.5 and 2
-
     //Lists
     [SerializeField] List<GameObject> ListThoughts;
     [SerializeField] List<GameObject> ListInactiveThoughts;
@@ -16,12 +14,10 @@ public class FirstThoughtsManager : MonoBehaviour
     //UI Panels
     [SerializeField] GameObject ThoughtsPanel;
     [SerializeField] GameObject InstructionsPanel;
-    //[SerializeField] GameObject CalmDownText;
     [SerializeField] GameObject MouseInstPanel;
 
     //UI Text
     [SerializeField] GameObject DialogueBox;
-    //[SerializeField] GameObject TextWhatDay; //have it on the panel so that when it is activated this activates as well
 
     //The Game Manager reference 
     TheGameManager TGMScript;
@@ -33,7 +29,7 @@ public class FirstThoughtsManager : MonoBehaviour
     int alreadyReappeared; 
     int nrClicksToReappear = 3;
 
-    //animator
+    //Animator
     [SerializeField] Animator anim;
 
     //MouseLock reference
@@ -57,11 +53,6 @@ public class FirstThoughtsManager : MonoBehaviour
         }
 
         //hide all panels
-        
-        //CalmDownText.SetActive(false);
-        //TextWhatDay.SetActive(false);
-
-
         InstructionsPanel.SetActive(false);
         DialogueBox.SetActive(false);
 
@@ -100,23 +91,15 @@ public class FirstThoughtsManager : MonoBehaviour
         anim.SetBool("GetUp", true);
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("GetUp"); 
 
-        //Wait for animation
-        yield return new WaitForSeconds(10); //as much as it needs for the player to wake up
+        yield return new WaitForSeconds(10); //wait as much as it needs for the player to wake up
 
         //Increase the camera clamp so they can reach the notebook
         GameObject.Find("FirstPersonCamera").GetComponent<FirstPersonCamera>().horizClamp = 115;
 
-        //Lock Camera
-        //CameraScript.mouseSens = 0f;
-
-        //Show dialogue box
-
-        //TextWhatDay.SetActive(true);
         DialogueBox.GetComponentInChildren<Text>().text = "What day is it today?";
 
         yield return new WaitForSeconds(2);
         DialogueBox.GetComponentInChildren<Text>().text = " ";
-        //TextWhatDay.SetActive(false);
 
         //Heartbeat sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Heartbeat30");
@@ -126,30 +109,22 @@ public class FirstThoughtsManager : MonoBehaviour
         {
             //ActivateText
             ShowText(i);
-
-            //Wait
-            yield return new WaitForSeconds(2.5f); //B 2.5
+            yield return new WaitForSeconds(2.5f);
 
             //ActivateButton
             ShowButton(i);
-
-            //Wait
             yield return new WaitForSeconds(1);
 
             //IncreaseAnxiety
             IncreaseAnxietyMeter();
 
-            //Wait until repeat
-            yield return new WaitForSeconds(2); //B 2
+            //Wait until repeat loop
+            yield return new WaitForSeconds(2); 
         }
 
-        //heart racing sounds
-
-        //Wait
-        yield return new WaitForSeconds(2); //4 seconds in total at the end
+        yield return new WaitForSeconds(2); 
 
         //CalmDown
-        //CalmDownText.SetActive(true);
         ListText[ListText.Count - 1].SetActive(false); //last text hidden
         DialogueBox.GetComponentInChildren<Text>().text = "Shh... Calm down... Firstly just breathe and try to make these thoughts go away.";
 
@@ -161,8 +136,6 @@ public class FirstThoughtsManager : MonoBehaviour
 
         //Breathing sounds
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Breathing");
-
-        //Wait
         yield return new WaitForSeconds(4); 
 
         //Instructions 
@@ -170,26 +143,17 @@ public class FirstThoughtsManager : MonoBehaviour
         InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to make it disappear*";
         DialogueBox.GetComponentInChildren<Text>().text = "I know there is a solution, I just have to remember.";
 
-        //Activate buttons
+        //Buttons
         ActivateButtons();
-        
-        //Or maybe unlock mouse here
 
         //Message
         ScriptTABMechanic.ShowMessageIcon();
         ScriptTABMechanic.SoundNotification();
-        TABMechanic.index = 6;
-
-        //Snap to the 4th message
-        ScriptTABMechanic.SnapTo(ScriptTABMechanic.ListMessages[2].GetComponent<RectTransform>());
+        TABMechanic.index = 6;        
+        ScriptTABMechanic.SnapTo(ScriptTABMechanic.ListMessages[2].GetComponent<RectTransform>()); //Snap to the 4th message
 
         yield return null;
     }
-
-    void Update()
-    {
-
-    }  
 
     void ShowText(int i)
     {
@@ -230,7 +194,7 @@ public class FirstThoughtsManager : MonoBehaviour
         {
             //Select randomly a button to reappear
             int random = Random.Range(0, ListInactiveThoughts.Count-1); //The max number is EXCLUSIVE if it uses INT + // -1 because you don't want the button you just clicked on to reappear
-            print("random is " + random);
+            //print("random is " + random);
             ListInactiveThoughts[random].SetActive(true); 
             ListInactiveThoughts.Remove(ListInactiveThoughts[random]);
 
@@ -242,19 +206,12 @@ public class FirstThoughtsManager : MonoBehaviour
 
         if (ListInactiveThoughts.Count == 5)
         {
-            print("DONE");
-
             //Stop sound
             GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Breathing");
 
-            //deactivate all panels
+            //Deactivate panels + Text + Instructions
             ThoughtsPanel.SetActive(false);
-            //InstructionsPanel.SetActive(false);
-            //CalmDownText.SetActive(false);
-
             DialogueBox.GetComponentInChildren<Text>().text = "Now I can find a solution.";
-
-            //Instructions
             InstructionsPanel.GetComponentInChildren<Text>().text = "*Look around to find a solution for Mary and click on it*";
 
             //Unlock camera

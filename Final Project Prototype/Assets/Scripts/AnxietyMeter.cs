@@ -4,28 +4,13 @@ using UnityEngine;
 
 public class AnxietyMeter : MonoBehaviour
 {
-    //GameObject[] AMparts;
     [SerializeField] List<GameObject> AMparts = new List<GameObject>();
     int listIndex;
 
     void Start()
     {
         foreach (GameObject part in AMparts)
-        { /*
-            if(part.activeSelf == true)
-            {
-                listSize++; //count all parts in the meter
-            }*/
-
             part.SetActive(false);
-        }
-
-    }
-
-    void Update()
-    {
-        //print(listIndex);
-        //print("list index ANXIETY " + listIndex);
     }
 
     public void DecreaseAnxiety()

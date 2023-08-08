@@ -18,17 +18,12 @@ public class TABMechanic : MonoBehaviour
     public List<GameObject> ListMessages;
     public static int index;
 
-    bool stopLockingMouse;
+    //bool stopLockingMouse;
 
-    // Start is called before the first frame update
     void Start()
     {
         TABPanel.SetActive(false);
         MessageIcon.SetActive(false);
-
-        //test
-        //index = 6;
-        //SnapTo(ListMessages[2].GetComponent<RectTransform>());
 
         foreach (GameObject message in ListMessages)
             message.SetActive(false);
@@ -41,40 +36,25 @@ public class TABMechanic : MonoBehaviour
             tabOpenedAtLeastOnce = true;
             if (tabOpened)
             {
-                
                 TABPanel.SetActive(true);
                 Time.timeScale = 0f; //pause game
-                print("freeze");
                 tabOpened = false;
 
                 for(int i = 0; i < index; i++)
                 {
                     ListMessages[i].SetActive(true);
-                    print(index);
+                    //print(index);
                 }
 
-                //Unlock Mouse
                 gameObject.GetComponent<MouseLock>().UnlockMouseFunction();
-                stopLockingMouse = false;
+                //stopLockingMouse = false;
             }
             else
             {
-
                 TABPanel.SetActive(false);
                 MessageIcon.SetActive(false);
                 Time.timeScale = 1f;
                 tabOpened = true;
-
-                //Lock Mouse
-
-                /*
-                if(!stopLockingMouse) //without this if you can't unlock the mouse later on because it is in Update
-                {
-                    print("locking");
-                    gameObject.GetComponent<MouseLock>().LockMouseFunction();
-                    stopLockingMouse = true;
-                }
-                */
             }
         }
     }
@@ -82,7 +62,6 @@ public class TABMechanic : MonoBehaviour
     public void ShowMessageIcon()
     {
         MessageIcon.SetActive(true);
-        //play sound
     }
 
     public void SnapTo(RectTransform target)

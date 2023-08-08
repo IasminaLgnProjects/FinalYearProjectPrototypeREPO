@@ -26,10 +26,7 @@ public class ClickedLaptop : MonoBehaviour
     private void OnMouseDown()
     {
         gameObject.GetComponent<Collider>().enabled = false;
-        print("clicked");
-        //ClockObject.SetActive(true);
-        //Time.timeScale = 0;
-        //Invoke("CloseClock", 5);
+
         StartCoroutine("AssignmentCoroutine");
     }
 
@@ -37,11 +34,6 @@ public class ClickedLaptop : MonoBehaviour
     {
         ClockObject.SetActive(false);
         GameObject.Find("StudySceneManager").GetComponent<CrossToDoList>().ListAtTheEnd();
-    }
-
-    private void OnMouseOver()
-    {
-        print("over");
     }
 
     IEnumerator AssignmentCoroutine()
@@ -55,18 +47,18 @@ public class ClickedLaptop : MonoBehaviour
         gameObject.GetComponent<ChangeCrsForScenes>().unlockedCursor = true;
         hideCursor = true;
 
-        //Typing sound
+        //Typing + Yawn sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Typing");
 
         yield return new WaitForSeconds(5);
         DialogueBox.SetActive(true);
 
-        //Yawn sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Yawn");
         DialogueBox.GetComponentInChildren<Text>().text = "I feel so tired and I barely did anything... These racing thoughts are really exhausting.";
 
         yield return new WaitForSeconds(8);
 
+        //Dialogue
         DialogueBox.GetComponentInChildren<Text>().text = "Sometimes these thoughts won't go away no matter what I do...";
         yield return new WaitForSeconds(6);
         DialogueBox.GetComponentInChildren<Text>().text = "Even when I know the cause.";
@@ -85,7 +77,6 @@ public class ClickedLaptop : MonoBehaviour
 
         //To Do List
         Close();
-
 
         yield return null;
     }

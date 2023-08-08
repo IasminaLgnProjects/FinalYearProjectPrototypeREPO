@@ -6,18 +6,8 @@ public class TheAudioManager : MonoBehaviour
 {
     public Sound[] ListOfSounds;
 
-    //public static TheAudioManager instance;
-
     void Awake()
     {
-        /*if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);*/
 
         foreach (Sound s in ListOfSounds)
         {
@@ -43,24 +33,13 @@ public class TheAudioManager : MonoBehaviour
             return;
         }
 
-        //if (name == "Ambience")
-            //s.volume = 0.1f;
-
-        s.soundSource.Play();
-
-
-            
+        s.soundSource.Play();    
     }
 
     public void StopAudio(string name)
     {
         Sound s = Array.Find(ListOfSounds, sound => sound.name == name);
-        
-        /*if (s == null)
-        {
-            Debug.LogWarning(name + "could not be found!");
-            return;
-        }*/
+
         s.soundSource.Stop();
     }
 

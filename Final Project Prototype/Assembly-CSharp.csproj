@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ClickableObjects\MouseLock.cs" />
-    <Compile Include="Assets\Scripts\FirstPersonCamera.cs" />
+    <Compile Include="Assets\Scripts\Character\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\Test\QuestionsAndAnswers.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedBook.cs" />
     <Compile Include="Assets\Scripts\AnxietyMeter.cs" />
@@ -68,21 +68,20 @@
     <Compile Include="Assets\Scripts\ClickableObjects\OLDChangeCrsForScenes.cs" />
     <Compile Include="Assets\Scripts\Test\TestManager.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedToDoList.cs" />
-    <Compile Include="Assets\Scripts\TheGameManager.cs" />
+    <Compile Include="Assets\Scripts\Needs optimisation\TheGameManager.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedPhone.cs" />
     <Compile Include="Assets\Scripts\FirstSceneManager.cs" />
-    <Compile Include="Assets\Scripts\Sound.cs" />
+    <Compile Include="Assets\Scripts\Audio\Sound.cs" />
     <Compile Include="Assets\Scripts\Clock.cs" />
-    <Compile Include="Assets\Scripts\ToDoListreference.cs" />
+    <Compile Include="Assets\Scripts\Needs optimisation\ToDoListreference.cs" />
     <Compile Include="Assets\Scripts\RayCastScript.cs" />
-    <Compile Include="Assets\Scripts\TextDialogue.cs" />
+    <Compile Include="Assets\Scripts\Needs optimisation\TextDialogue.cs" />
     <Compile Include="Assets\Scripts\BlurFade.cs" />
-    <Compile Include="Assets\Scripts\Lerp.cs" />
+    <Compile Include="Assets\Scripts\Character\Lerp.cs" />
     <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\Scripts\KeepBetweenScenes.cs" />
-    <Compile Include="Assets\Scripts\TheAudioManager.cs" />
-    <Compile Include="Assets\Scripts\ButtonMovementTest.cs" />
+    <Compile Include="Assets\Scripts\Audio\TheAudioManager.cs" />
     <Compile Include="Assets\Scripts\TABMechanic.cs" />
     <Compile Include="Assets\3D Skybox\Common\Scripts\RandomRotator.cs" />
     <Compile Include="Assets\Scripts\ClickableObjects\ClickedLaptop.cs" />

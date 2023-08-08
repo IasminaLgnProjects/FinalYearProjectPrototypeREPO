@@ -19,27 +19,22 @@ public class SecondThgTasksManager : MonoBehaviour
     public bool triedClicking; //make this private
 
     [SerializeField] GameObject NotWorkingButtons;
-    //[SerializeField] GameObject ToDoListPanel;
 
     [SerializeField] GameObject InstructionsPanel;
     [SerializeField] GameObject AnxietyMeterPanel;
     [SerializeField] GameObject CalendarPanel;
 
     //The Game Manager reference 
-    //TheGameManager TGMScript;
     GameObject TGMObject;
 
-    //ToDoList
+    //ToDoList callind the coroutine
     [SerializeField] Collider notepadCollider;
 
-    //MouseLock reference
     MouseLock MouseLockScript;
 
-    // Start is called before the first frame update
     void Start()
     {
         notepadCollider.enabled = false;
-        //TGMScript = GameObject.Find("TheGameManager").GetComponent<TheGameManager>();
         TGMObject = GameObject.Find("TheGameManager");
         DialogueText = DialogueBox.GetComponentInChildren<Text>().text;
         MouseLockScript = GameObject.Find("TheGameManager").GetComponent<MouseLock>();
@@ -51,86 +46,44 @@ public class SecondThgTasksManager : MonoBehaviour
         }
 
         NotWorkingButtons.SetActive(false);
-        //ToDoListPanel.SetActive(false);
-
-        //notepadCollider.enabled = false;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator SecondThgtTasksCoroutine()
     {
-        //print("STARTED SECOND");
-
-        //DialogueLine
-        //DialogueText = "Oh! Today is Lisa's birthday";
         DialogueBox.GetComponentInChildren<Text>().text = "Oh! Today is Lisa's birthday.";
 
-        //Unlock Mouse
+        //Mouse
         MouseLockScript.UnlockMouseFunction();
 
-        //Wait
         yield return new WaitForSeconds(2);
 
-        //Activate Panel
+        //Show thought bubbles
         NotWorkingButtons.SetActive(true);
 
-        //Hear racing sounds
+        //Sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Heartbeat20");
 
         for (int i = 0; i < ListNoninteractiveButtons.Count; i++)
         {
-            //Show dialogue line
             ShowText(i);
 
-            //Wait
-            yield return new WaitForSeconds(2.5f); //B 2.5
+            yield return new WaitForSeconds(2.5f);
 
-            //ActivateButton
             ShowButton(i);
 
-            //Wait
             yield return new WaitForSeconds(1);
 
-            //IncreaseAnxiety
             IncreaseAnxietyMeter();
 
-            //Wait until repeat
-            yield return new WaitForSeconds(2); //B 2
+            yield return new WaitForSeconds(2); //Wait until repeat loop
         }
-
-        //Calm down text 
 
         DialogueBox.GetComponentInChildren<Text>().text = "Calm down... Just don't think too much about it.";
 
-        //breathing sounds
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Breathing");
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Heartbeat20");
 
-        //Activate buttons
         ActivateButtons();
-
-        /*
-        if(triedClicking)
-        {
-            //Wait a bit
-            yield return new WaitForSeconds(3); //maybe increase it
-
-            AnxietyMeterPanel.SetActive(false);
-            NotWorkingButtons.SetActive(false);
-            ToDoListPanel.SetActive(true);
-
-            DialogueText = "I know! I can just add them into a To Do List to be sure I don't forget any";
-
-            InstructionsPanel.SetActive(true);
-            InstructionsPanel.GetComponentInChildren<Text>().text = "*Click on a thought to add it in the list. Once in list click to remove it.*";
-
-        }*/
 
         //Player tries to click
         yield return null;
@@ -170,12 +123,7 @@ public class SecondThgTasksManager : MonoBehaviour
             GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Breathing");
             GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("RapidHeartbeat");
 
-            //IncreaseAnxietyMeter(); //twice
-            //heard racing sounds
-            //triedClicking = true;
-            //Invoke("ToDoList", 7); //maybe increase
-
-            Invoke("LookForToDoList", 6); //maybe increase
+            Invoke("LookForToDoList", 6);
         }
     }
 

@@ -12,13 +12,11 @@ public class TheGameManager : MonoBehaviour
     public GameObject CalendarPanel;
     public GameObject MessagePanel;
 
-    //
-    public TasksInOrder ListReferenceScript;
-    //string nameOfTask;
-    public List<GameObject> ToDoList;
-    int oldSceneCounter;
 
-    // Start is called before the first frame update
+    public TasksInOrder ListReferenceScript;
+    public List<GameObject> ToDoList;
+
+
     void Start()
     {
         ThoughtBubblePanel.SetActive(false);
@@ -27,15 +25,14 @@ public class TheGameManager : MonoBehaviour
         MessagePanel.SetActive(false);
 
         ListReferenceScript = gameObject.GetComponent<TasksInOrder>();
-
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        /* DEBUG
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            print("1");
             ThoughtBubblePanel.SetActive(true);
         }
 
@@ -64,6 +61,6 @@ public class TheGameManager : MonoBehaviour
             ToDoListPanel.SetActive(false);
             MessagePanel.SetActive(true);
         }
-
+        */
     }
 }

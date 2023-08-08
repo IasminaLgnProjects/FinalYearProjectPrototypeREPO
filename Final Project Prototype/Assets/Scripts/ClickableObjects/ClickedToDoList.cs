@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClickedToDoList : MonoBehaviour
+public class ClickedToDoList : MonoBehaviour //Only deals with ToDoList UI + cursor unlock
 {
     [SerializeField] GameObject DialogueBox;
     public string DialogueText; //make this private
@@ -16,13 +16,11 @@ public class ClickedToDoList : MonoBehaviour
     [SerializeField] GameObject CursorDef;
     bool hideCursor;
 
-    // Start is called before the first frame update
     void Start()
     {
         ToDoListPanel.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(hideCursor) CursorDef.SetActive(false);
@@ -32,7 +30,6 @@ public class ClickedToDoList : MonoBehaviour
     {
         gameObject.GetComponent<Collider>().enabled = false;
         ToDoList();
-        //print("clicked list");
     }
 
     void ToDoList()
@@ -41,8 +38,6 @@ public class ClickedToDoList : MonoBehaviour
 
         //UnlockCursor
         GameObject.Find("TheGameManager").GetComponent<MouseLock>().UnlockMouseFunction();
-        //if (GameObject.Find("CursorIcon").activeInHierarchy) GameObject.Find("CursorIcon").SetActive(false);
-        //CursorDef.SetActive(false);
         hideCursor = true;
 
         //hide
@@ -52,6 +47,7 @@ public class ClickedToDoList : MonoBehaviour
         //sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("RapidHeartbeat");
 
+        //text + instructions
         DialogueBox.GetComponentInChildren<Text>().text = "I know! I can just add them into a To Do List to be sure I don't forget anything.";
 
         InstructionsPanel.SetActive(true);

@@ -172,8 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSens: 10
-  point1: {fileID: 0}
-  point2: {fileID: 0}
   horizClamp: 95
 --- !u!114 &828428
 MonoBehaviour:
@@ -3623,8 +3621,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSens: 3
-  point1: {fileID: 901438690}
-  point2: {fileID: 597581844}
   horizClamp: 95
 --- !u!114 &242921248
 MonoBehaviour:
@@ -17185,8 +17181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSens: 3
-  point1: {fileID: 901438690}
-  point2: {fileID: 597581844}
   horizClamp: 95
 --- !u!114 &1407337096
 MonoBehaviour:

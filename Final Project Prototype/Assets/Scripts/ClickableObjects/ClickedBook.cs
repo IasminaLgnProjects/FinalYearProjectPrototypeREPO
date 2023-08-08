@@ -20,11 +20,12 @@ public class ClickedBook : MonoBehaviour
         ClockObject.SetActive(false);
         BlurImage = BlurBook.GetComponentInChildren<Image>();
 
-        //hide panels
+        //Hide panels
         Book.SetActive(false);
         ClockObject.SetActive(false);
         BlurBook.SetActive(false);
-        //DialogueBox.SetActive(false);
+
+        //Hint
         DialogueBox.GetComponentInChildren<Text>().text = "I have to start studying now, I have a lot to read.";
 
         //Tab
@@ -48,10 +49,6 @@ public class ClickedBook : MonoBehaviour
     private void OnMouseDown()
     {
         gameObject.GetComponent<Collider>().enabled = false;
-        print("clicked");
-        //ClockObject.SetActive(true);
-        //Time.timeScale = 0;
-        //Invoke("CloseClock", 5);
 
         StartCoroutine("BookCoroutine");
     }
@@ -60,11 +57,6 @@ public class ClickedBook : MonoBehaviour
     {
         ClockObject.SetActive(false);
         GameObject.Find("StudySceneManager").GetComponent<CrossToDoList>().ListAtTheEnd();
-    }
-
-    private void OnMouseOver()
-    {
-        //print("over");
     }
 
     IEnumerator BookCoroutine()
@@ -80,22 +72,15 @@ public class ClickedBook : MonoBehaviour
         //Page sound
         GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Page");
 
-        //Wait
-        yield return new WaitForSeconds(8); //4
+        yield return new WaitForSeconds(8); 
 
-        //Initiate blur panel
+        //Initiate blur panel + start blur fade in
         BlurBook.SetActive(true);
         BlurImage.color = new Color(BlurImage.color.r, BlurImage.color.b, BlurImage.color.g, 0f);
 
-        //Start blur fade in
         fading = true;
-        print("fading in");
-
-        //Wait
-        //yield return new WaitForSeconds(10);
 
         //Slow clock
-        //ClockObject.GetComponent<Clock>().rotationDegreesPerDay = 20f;
         ClockObject.GetComponent<Clock>().REAL_SECONDS_PER_INGAME_DAY = 300f;
 
         //Dialogue
@@ -110,11 +95,11 @@ public class ClickedBook : MonoBehaviour
         //blur fade out
         fading = false;
         fadeSpeed = 0.9f;
-        //print("fading out");
+
         yield return new WaitForSeconds(3);
 
+        //reset blur
         fading = true;
-        print("fading back");
 
         yield return new WaitForSeconds(4);
 
@@ -122,12 +107,10 @@ public class ClickedBook : MonoBehaviour
         ScriptTABMechanic.ShowMessageIcon();
         ScriptTABMechanic.SoundNotification();
         TABMechanic.index = 10;
-        //Snap to the last
-        ScriptTABMechanic.SnapTo(ScriptTABMechanic.ListMessages[9].GetComponent<RectTransform>());
+        ScriptTABMechanic.SnapTo(ScriptTABMechanic.ListMessages[9].GetComponent<RectTransform>()); //Snap to the last
 
         yield return new WaitForSeconds(6);
         DialogueBox.GetComponentInChildren<Text>().text = "There is no use... I hope I studied enough for today.";
-
 
         yield return new WaitForSeconds(6);
         Close();

@@ -7,16 +7,12 @@ using UnityEngine.EventSystems;
 
 public class TestManager : MonoBehaviour
 {
-    //You'll have to add a game completion panel and then redirect to Test "Start test" button 
-
-
-    public List<QuestionsAndAnswers> Test; //see which one to make Serializefield
+    public List<QuestionsAndAnswers> Test;
     public List<GameObject> buttons;
     public int currentQ = 0;
     public Text textQuestion;
 
     //UI
-    
     [SerializeField] GameObject CongratsPanel;
     [SerializeField] GameObject TestPanel;
     [SerializeField] GameObject EndPanel;
@@ -32,7 +28,7 @@ public class TestManager : MonoBehaviour
 
     void Start()
     {
-        //resolution
+        //Resolution
         Screen.SetResolution(1920, 1080, true);
 
         //UI
@@ -40,11 +36,6 @@ public class TestManager : MonoBehaviour
         TestPanel.SetActive(false);
         RefPanel.SetActive(false);
         WriteQuestion();
-    }
-
-    void Update()
-    {
-        
     }
 
     public void StartTest()
@@ -79,17 +70,13 @@ public class TestManager : MonoBehaviour
     public void CorrectAnswerSelected()
     {
         correctAnswersClicked++;
-        //gameObject.GetComponent<Button>().colors.pressedColor = Color.green;
-        //EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = Color.green;
 
         if (currentQ < Test.Count - 1)
             currentQ++;
         else
             Invoke("EndTest", 1);
-            //EndTest();
 
         Invoke("WriteQuestion", 1);
-        //WriteQuestion();
     }
 
     public void WrongAnswerSelected()
@@ -98,10 +85,8 @@ public class TestManager : MonoBehaviour
             currentQ++;
         else
             Invoke("EndTest", 1);
-            //EndTest();
 
         Invoke("WriteQuestion", 1);
-        //WriteQuestion();
     }
 
     void EndTest()

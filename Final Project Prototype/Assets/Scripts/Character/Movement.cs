@@ -62,24 +62,6 @@ public class Movement : MonoBehaviour
         animator.SetBool("walkingBack", Input.GetKey(KeyCode.S));
 
         //Sound
-        /*
-        if(horzAxis == 0 && vertAxis == 0)
-            GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Footstep");
-        else
-            GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Footstep");*/
-
-        /*
-        if (horzAxis == 0 && vertAxis == 0)
-        {
-            print("stopped");
-            GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Footstep");
-        }
-        else
-        {
-            print("moving");
-            GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().PlayAudio("Footstep");
-        }*/
-
         if ((horzAxis != 0 || vertAxis != 0) && playingSound == false)
         {
             
@@ -88,14 +70,11 @@ public class Movement : MonoBehaviour
             //print("moving");
         }
 
-
         if(horzAxis == 0 && vertAxis == 0)
         {
             playingSound = false;
             //print("stopped");
             GameObject.Find("TheAudioManager").GetComponent<TheAudioManager>().StopAudio("Footstep");
         }
-
-
     }
 }

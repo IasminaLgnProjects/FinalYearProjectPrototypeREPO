@@ -9,23 +9,13 @@ public class TasksReferences : MonoBehaviour
 
     [SerializeField] List<GameObject> ListTasksReferences;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void Activate(string s)
     {
         foreach (GameObject task in ListTasksReferences)
         {
             if(task.name == s)
             {
-                print("match");
+                //print("match");
                 task.SetActive(true);
             }
         }

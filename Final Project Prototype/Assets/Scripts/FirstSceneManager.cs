@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FirstSceneManager : MonoBehaviour
+public class FirstSceneManager : MonoBehaviour //Deals with the UI for the disclaimer/support/story panels
 {
     //UI
-
     [SerializeField] GameObject StoryPanel;
     [SerializeField] GameObject SupportPanel;
     [SerializeField] GameObject PlayButton;
@@ -14,10 +13,9 @@ public class FirstSceneManager : MonoBehaviour
     [SerializeField] GameObject DisclaimerPanel;
     [SerializeField] GameObject SecondNextButton;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //resolution
+        //Resolution
         Screen.SetResolution(1920, 1080, true);
 
         //UI
@@ -26,14 +24,8 @@ public class FirstSceneManager : MonoBehaviour
         NextButton.SetActive(false);
         StoryPanel.SetActive(false);
         SecondNextButton.SetActive(false);
-        //DisclaimerPanel is active
+        //DisclaimerPanel is already active
         Invoke("ShowNextButton", 5); //wait 5 seconds then activate the button
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void ShowNextButton()
